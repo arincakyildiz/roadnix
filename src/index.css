@@ -1900,6 +1900,12 @@ footer p {
   color: #ef4444;
 }
 
+.hint-text {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0.5rem 0 1rem;
+}
+
 .attention-warning {
   font-size: 0.85rem;
   color: var(--muted);

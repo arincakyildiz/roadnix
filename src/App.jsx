@@ -2007,15 +2007,15 @@ function App() {
                       const impairmentLabel =
                         impairment === 'Low'
                           ? isTR
-                            ? 'Düşük'
-                            : 'Low'
+                            ? 'Düşük risk'
+                            : 'Low risk'
                           : impairment === 'Medium'
                             ? isTR
-                              ? 'Orta'
-                              : 'Medium'
+                              ? 'Orta risk'
+                              : 'Medium risk'
                             : isTR
-                              ? 'Yüksek'
-                              : 'High'
+                              ? 'Yüksek risk'
+                              : 'High risk'
 
                       return (
                         <>
@@ -2041,10 +2041,16 @@ function App() {
                               <p className="value">{attentionStats.wrongClicks}</p>
                             </div>
                             <div>
-                              <p className="label">{isTR ? 'Dikkat seviyesi' : 'Attention level'}</p>
+                              <p className="label">{isTR ? 'Risk seviyesi' : 'Impairment level'}</p>
                               <p className={`value impairment-${impairment.toLowerCase()}`}>{impairmentLabel}</p>
                             </div>
                           </div>
+
+                          <p className="hint-text">
+                            {isTR
+                              ? 'Düşük risk daha iyi dikkat performansı anlamına gelir; yüksek risk ise dikkat kaybının arttığını gösterir.'
+                              : 'Low risk means stronger attention performance; high risk indicates more impairment.'}
+                          </p>
 
                           <p className="attention-warning">
                             {isTR

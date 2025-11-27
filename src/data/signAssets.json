@@ -118,7 +118,7 @@
     },
     {
       "label": "Side Winds",
-      "src": "/signs/warning/side-widns.jpg"
+      "src": "/signs/warning/side-winds.jpg"
     },
     {
       "label": "Slippery Road",
@@ -186,7 +186,7 @@
     },
     {
       "label": "Water Course Alongside Road",
-      "src": "/signs/warning/water-coruse-alongside-road.jpg"
+      "src": "/signs/warning/water-course-alongside-road.jpg"
     },
     {
       "label": "Wild Animals",
@@ -207,8 +207,8 @@
       "src": "/signs/prohibitory/end-of-no-overtaking.jpg"
     },
     {
-      "label": "End Of No Parkingzone",
-      "src": "/signs/prohibitory/end-of-no-parkingzone.jpg"
+      "label": "End Of No Parking Zone",
+      "src": "/signs/prohibitory/end-of-no-parking-zone.jpg"
     },
     {
       "label": "Maximum Speed",
@@ -232,7 +232,7 @@
     },
     {
       "label": "No Agricultural Vehicles",
-      "src": "/signs/prohibitory/no-agricle-vehicles.jpg"
+      "src": "/signs/prohibitory/no-agricultural-vehicles.jpg"
     },
     {
       "label": "No Crossing Pedestrians",
@@ -243,16 +243,16 @@
       "src": "/signs/prohibitory/no-cycling.jpg"
     },
     {
+      "label": "No Entry Mopeds",
+      "src": "/signs/prohibitory/no-entry-mopeds.jpg"
+    },
+    {
       "label": "No Entry Motorcycles",
-      "src": "/signs/prohibitory/no-enrty-motorcycles.jpg"
+      "src": "/signs/prohibitory/no-entry-motorcycles.jpg"
     },
     {
       "label": "No Entry",
-      "src": "/signs/prohibitory/no-enrty.jpg"
-    },
-    {
-      "label": "No Entry Mopeds",
-      "src": "/signs/prohibitory/no-entry-mopeds.jpg"
+      "src": "/signs/prohibitory/no-entry.jpg"
     },
     {
       "label": "No Heavy Goods Vehicles",
@@ -280,7 +280,7 @@
     },
     {
       "label": "No Overtaking",
-      "src": "/signs/prohibitory/no-overtakingg.jpg"
+      "src": "/signs/prohibitory/no-overtaking.jpg"
     },
     {
       "label": "No Parking On Even Dates",
@@ -296,7 +296,7 @@
     },
     {
       "label": "No Parking Zone",
-      "src": "/signs/prohibitory/no-parkingzone.jpg"
+      "src": "/signs/prohibitory/no-parking-zone.jpg"
     },
     {
       "label": "No Right Turn",
@@ -500,7 +500,7 @@
     },
     {
       "label": "Entrances Exits Left Side",
-      "src": "/signs/road-markings/extrances-exits-left-side.jpg"
+      "src": "/signs/road-markings/entrances-exits-left-side.jpg"
     },
     {
       "label": "Give Way Traffic Mainroad",

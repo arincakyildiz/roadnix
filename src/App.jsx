@@ -1997,25 +1997,50 @@ function App() {
                             )
                           : null
 
-                      let impairment = 'Low'
-                      if (!avgMs || avgMs > 750 || attentionStats.missedTargets > 6 || attentionStats.wrongClicks > 6) {
-                        impairment = 'High'
-                      } else if (avgMs > 550 || attentionStats.missedTargets > 3 || attentionStats.wrongClicks > 3) {
-                        impairment = 'Medium'
+                      const bestMs = 280
+                      const worstMs = 900
+                      const reactionScore = avgMs
+                        ? Math.max(
+                            0,
+                            Math.min(100, ((worstMs - avgMs) / (worstMs - bestMs)) * 100)
+                          )
+                        : 0
+                      const accuracyPenalty = attentionStats.missedTargets * 8 + attentionStats.wrongClicks * 6
+                      const accuracyScore = Math.max(0, 100 - accuracyPenalty)
+                      const overallScore = Math.round(reactionScore * 0.65 + accuracyScore * 0.35)
+
+                      let impairment = 'low'
+                      if (!avgMs || overallScore < 45) {
+                        impairment = 'high'
+                      } else if (overallScore < 75) {
+                        impairment = 'medium'
                       }
 
                       const impairmentLabel =
-                        impairment === 'Low'
+                        impairment === 'low'
                           ? isTR
                             ? 'Düşük risk'
                             : 'Low risk'
-                          : impairment === 'Medium'
+                          : impairment === 'medium'
                             ? isTR
                               ? 'Orta risk'
                               : 'Medium risk'
                             : isTR
                               ? 'Yüksek risk'
                               : 'High risk'
+
+                      const riskDescription =
+                        impairment === 'low'
+                          ? isTR
+                            ? 'Reflekslerin güvenli aralıkta; dikkat kaybı riski düşük.'
+                            : 'Reactions stay in a safe range; impairment risk is low.'
+                          : impairment === 'medium'
+                            ? isTR
+                              ? 'Tepkilerin yavaşlamış; hafif alkol, yorgunluk veya dikkat dağıtıcı etkiler olabilir.'
+                              : 'Responses slowed; mild alcohol, fatigue or distractions may be affecting you.'
+                            : isTR
+                              ? 'Reaksiyonlar kritik derecede yavaş veya hatalar fazla; araç kullanmak riskli.'
+                              : 'Critical slowdown or too many errors; driving would be risky right now.'
 
                       return (
                         <>
@@ -2044,6 +2069,15 @@ function App() {
                               <p className="label">{isTR ? 'Risk seviyesi' : 'Impairment level'}</p>
                               <p className={`value impairment-${impairment.toLowerCase()}`}>{impairmentLabel}</p>
                             </div>
+                          </div>
+
+                          <div className="risk-score-card">
+                            <p className="label">{isTR ? 'Risk puanı' : 'Risk score'}</p>
+                            <p className="value score">
+                              {overallScore}
+                              <span>/100</span>
+                            </p>
+                            <p className="risk-description">{riskDescription}</p>
                           </div>
 
                           <p className="hint-text">

@@ -1906,6 +1906,34 @@ footer p {
   margin: 0.5rem 0 1rem;
 }
 
+.risk-score-card {
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  border-radius: 0.9rem;
+  padding: 0.9rem 1rem;
+  background: rgba(248, 250, 252, 0.7);
+  margin-bottom: 1rem;
+}
+
+.risk-score-card .score {
+  font-size: 1.6rem;
+  font-weight: 700;
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.risk-score-card .score span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.risk-description {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--muted-dark, #475569);
+}
+
 .attention-warning {
   font-size: 0.85rem;
   color: var(--muted);

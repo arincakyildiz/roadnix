@@ -2819,8 +2819,8 @@ function App() {
               <div className="hero-visual">
                 <div className="hero-dashboard matrix">
                   <div className="dashboard-header">
-                    <p>Smart Traffic Dashboard</p>
-                    <span className="live-pill">LIVE</span>
+                    <p>{isTR ? 'Akıllı Trafik Paneli' : 'Smart Traffic Dashboard'}</p>
+                    <span className="live-pill">{isTR ? 'CANLI' : 'LIVE'}</span>
                   </div>
                   <div className="matrix-wrapper">
                     <div key={matrixIndex} className="matrix-grid matrix-grid-anim">

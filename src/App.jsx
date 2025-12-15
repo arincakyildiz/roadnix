@@ -2686,8 +2686,8 @@ function App() {
 
                       let attentionLevel = 'Medium'
                       
-                      // Yüksek dikkat: %80+ doğru, %15'ten az yanlış
-                      if (correctRatio >= 0.8 && wrongRatio < 0.15 && avgMs && avgMs < 600) {
+                      // Yüksek dikkat: %70+ doğru, %15'ten az yanlış
+                      if (correctRatio >= 0.7 && wrongRatio < 0.15 && avgMs && avgMs < 600) {
                         attentionLevel = 'High'
                       }
                       // Düşük dikkat: %50'den az doğru VEYA %30'dan fazla yanlış

@@ -1,0 +1,594 @@
+{
+  "warning": [
+    {
+      "label": "Children",
+      "src": "/signs/warning/children.jpg"
+    },
+    {
+      "label": "Dangerous Bend",
+      "src": "/signs/warning/dangerous-bend.jpg"
+    },
+    {
+      "label": "Domestic Animals",
+      "src": "/signs/warning/domestic-animals.jpg"
+    },
+    {
+      "label": "Double Dangerous Bend",
+      "src": "/signs/warning/double-dangerous-bend.jpg"
+    },
+    {
+      "label": "Elderly Disabled Pedestrians",
+      "src": "/signs/warning/elderly-disabled-pedestrians.jpg"
+    },
+    {
+      "label": "Electrified Overhead Cable",
+      "src": "/signs/warning/electrified-overhead-cable.jpg"
+    },
+    {
+      "label": "End Of Dual Carriageway",
+      "src": "/signs/warning/end-of-dual-carriageway.jpg"
+    },
+    {
+      "label": "Falling Rocks",
+      "src": "/signs/warning/falling-rocks.jpg"
+    },
+    {
+      "label": "Hump Bridge",
+      "src": "/signs/warning/hump-bridge.jpg"
+    },
+    {
+      "label": "Junction On Bend",
+      "src": "/signs/warning/junction-on-bend.jpg"
+    },
+    {
+      "label": "Junction On Bend",
+      "src": "/signs/warning/junction-on-bend2.jpg"
+    },
+    {
+      "label": "Junction With Priority Right",
+      "src": "/signs/warning/junction-with-priority-right.jpg"
+    },
+    {
+      "label": "Junction With Secondary Road",
+      "src": "/signs/warning/junction-with-secondary-road.jpg"
+    },
+    {
+      "label": "Junction With Secondary Road",
+      "src": "/signs/warning/junction-with-secondary-road2.jpg"
+    },
+    {
+      "label": "Level Crossing With Barriers",
+      "src": "/signs/warning/level-crossing-with-barriers.jpg"
+    },
+    {
+      "label": "Loose Road Surface",
+      "src": "/signs/warning/loose-road-surface.jpg"
+    },
+    {
+      "label": "Low Flying Aircrafts",
+      "src": "/signs/warning/low-flying-aircrafts.jpg"
+    },
+    {
+      "label": "Low Flying Helicopters",
+      "src": "/signs/warning/low-flying-helicopters.jpg"
+    },
+    {
+      "label": "Other Danger",
+      "src": "/signs/warning/other-danger.jpg"
+    },
+    {
+      "label": "Pedal Cycle Route Crossing The Road",
+      "src": "/signs/warning/pedal-cycle-route-crossing-the-road.jpg"
+    },
+    {
+      "label": "Pedestrian Crossing",
+      "src": "/signs/warning/pedestrian-crossing.jpg"
+    },
+    {
+      "label": "Pedestrians",
+      "src": "/signs/warning/pedestrians.jpg"
+    },
+    {
+      "label": "Risk Of Grounding",
+      "src": "/signs/warning/risk-of-grounding.jpg"
+    },
+    {
+      "label": "Risk Of Ice",
+      "src": "/signs/warning/risk-of-ice.jpg"
+    },
+    {
+      "label": "Road Hump",
+      "src": "/signs/warning/road-hump.jpg"
+    },
+    {
+      "label": "Road Narrows On Both Side",
+      "src": "/signs/warning/road-narrows-on-both-side.jpg"
+    },
+    {
+      "label": "Road Narrows On One Side",
+      "src": "/signs/warning/road-narrows-on-one-side.jpg"
+    },
+    {
+      "label": "Roadworks",
+      "src": "/signs/warning/roadworks.jpg"
+    },
+    {
+      "label": "Roundabout",
+      "src": "/signs/warning/roundabout.jpg"
+    },
+    {
+      "label": "Side Winds",
+      "src": "/signs/warning/side-widns.jpg"
+    },
+    {
+      "label": "Slippery Road",
+      "src": "/signs/warning/slippery-road.jpg"
+    },
+    {
+      "label": "Slow Moving Vehicles On Hill Ahead",
+      "src": "/signs/warning/slow-moving-vehicles-on-hill-ahead.jpg"
+    },
+    {
+      "label": "Soft Verges Ahead",
+      "src": "/signs/warning/soft-verges-ahead.jpg"
+    },
+    {
+      "label": "Steep Ascent",
+      "src": "/signs/warning/steep-ascent.jpg"
+    },
+    {
+      "label": "Steep Descent",
+      "src": "/signs/warning/steep-descent.jpg"
+    },
+    {
+      "label": "Swing Bridge",
+      "src": "/signs/warning/swing-bridge.jpg"
+    },
+    {
+      "label": "T Junction",
+      "src": "/signs/warning/t-junction.jpg"
+    },
+    {
+      "label": "Traffic Merges Onto Main Carriageway",
+      "src": "/signs/warning/traffic-merges-onto-main-carriageway.jpg"
+    },
+    {
+      "label": "Traffic Queues",
+      "src": "/signs/warning/traffic-queues.jpg"
+    },
+    {
+      "label": "Traffic Signals",
+      "src": "/signs/warning/traffic-signals.jpg"
+    },
+    {
+      "label": "Tramway",
+      "src": "/signs/warning/tramway.jpg"
+    },
+    {
+      "label": "Tunnel",
+      "src": "/signs/warning/tunnel.jpg"
+    },
+    {
+      "label": "Two Way Traffic Crosses One Way Road",
+      "src": "/signs/warning/two-way-traffic-crosses-one-way-road.jpg"
+    },
+    {
+      "label": "Two Way Traffic",
+      "src": "/signs/warning/two-way-traffic.jpg"
+    },
+    {
+      "label": "Uneven Road",
+      "src": "/signs/warning/uneven-road.jpg"
+    },
+    {
+      "label": "Warning Signs",
+      "src": "/signs/warning/warning-signs.jpg"
+    },
+    {
+      "label": "Water Course Alongside Road",
+      "src": "/signs/warning/water-coruse-alongside-road.jpg"
+    },
+    {
+      "label": "Wild Animals",
+      "src": "/signs/warning/wild-animals.jpg"
+    }
+  ],
+  "prohibitory": [
+    {
+      "label": "End Of All Restrictions",
+      "src": "/signs/prohibitory/end-of-all-restrictions.jpg"
+    },
+    {
+      "label": "End Of Maximum Speedlimit",
+      "src": "/signs/prohibitory/end-of-maximum-speedlimit.jpg"
+    },
+    {
+      "label": "End Of No Overtaking",
+      "src": "/signs/prohibitory/end-of-no-overtaking.jpg"
+    },
+    {
+      "label": "End Of No Parkingzone",
+      "src": "/signs/prohibitory/end-of-no-parkingzone.jpg"
+    },
+    {
+      "label": "Maximum Speed",
+      "src": "/signs/prohibitory/maximum-speed.jpg"
+    },
+    {
+      "label": "Maximum Weight",
+      "src": "/signs/prohibitory/maximum-weight.jpg"
+    },
+    {
+      "label": "Maximum Weight",
+      "src": "/signs/prohibitory/maximum-weight2.jpg"
+    },
+    {
+      "label": "Maximum Width",
+      "src": "/signs/prohibitory/maximum-width.jpg"
+    },
+    {
+      "label": "Minimum Safe Following Between Vehicles",
+      "src": "/signs/prohibitory/minimum-safe-following-between-vehicles.jpg"
+    },
+    {
+      "label": "No Agricultural Vehicles",
+      "src": "/signs/prohibitory/no-agricle-vehicles.jpg"
+    },
+    {
+      "label": "No Crossing Pedestrians",
+      "src": "/signs/prohibitory/no-crossing-pedestrians.jpg"
+    },
+    {
+      "label": "No Cycling",
+      "src": "/signs/prohibitory/no-cycling.jpg"
+    },
+    {
+      "label": "No Entry Motorcycles",
+      "src": "/signs/prohibitory/no-enrty-motorcycles.jpg"
+    },
+    {
+      "label": "No Entry",
+      "src": "/signs/prohibitory/no-enrty.jpg"
+    },
+    {
+      "label": "No Entry Mopeds",
+      "src": "/signs/prohibitory/no-entry-mopeds.jpg"
+    },
+    {
+      "label": "No Heavy Goods Vehicles",
+      "src": "/signs/prohibitory/no-heavy-goods-vehicles.jpg"
+    },
+    {
+      "label": "No Horns",
+      "src": "/signs/prohibitory/no-horns.jpg"
+    },
+    {
+      "label": "No Horse Drawn Vehicles",
+      "src": "/signs/prohibitory/no-horse-drawn-vehicles.jpg"
+    },
+    {
+      "label": "No Motor Vehicles Except Motorcycles",
+      "src": "/signs/prohibitory/no-motor-vehicles-except-motorcycles.jpg"
+    },
+    {
+      "label": "No Motor Vehicles",
+      "src": "/signs/prohibitory/no-motor-vehicles.jpg"
+    },
+    {
+      "label": "No Overtaking Heavy Vehicles",
+      "src": "/signs/prohibitory/no-overtaking-heavy-vehicles.jpg"
+    },
+    {
+      "label": "No Overtaking",
+      "src": "/signs/prohibitory/no-overtakingg.jpg"
+    },
+    {
+      "label": "No Parking On Even Dates",
+      "src": "/signs/prohibitory/no-parking-on-even-dates.jpg"
+    },
+    {
+      "label": "No Parking On Odd Dates",
+      "src": "/signs/prohibitory/no-parking-on-odd-dates.jpg"
+    },
+    {
+      "label": "No Parking Or Waiting",
+      "src": "/signs/prohibitory/no-parking-or-waiting.jpg"
+    },
+    {
+      "label": "No Parking Zone",
+      "src": "/signs/prohibitory/no-parkingzone.jpg"
+    },
+    {
+      "label": "No Right Turn",
+      "src": "/signs/prohibitory/no-right-turn.jpg"
+    },
+    {
+      "label": "No Stopping",
+      "src": "/signs/prohibitory/no-stopping.jpg"
+    },
+    {
+      "label": "No Vehicle Over Length Shown",
+      "src": "/signs/prohibitory/no-vehicle-over-length-shown.jpg"
+    },
+    {
+      "label": "No Vehicles Carrying Dangerous Water Pollutants",
+      "src": "/signs/prohibitory/no-vehicles-carrying-dangerous-water-pollutants.jpg"
+    },
+    {
+      "label": "No Vehicles Carrying Explosives",
+      "src": "/signs/prohibitory/no-vehicles-carrying-explosives.jpg"
+    },
+    {
+      "label": "No Vehicles",
+      "src": "/signs/prohibitory/no-vehicles.jpg"
+    },
+    {
+      "label": "Stop Customs",
+      "src": "/signs/prohibitory/stop-customs.jpg"
+    },
+    {
+      "label": "Stop Police",
+      "src": "/signs/prohibitory/stop-police.jpg"
+    }
+  ],
+  "mandatory": [
+    {
+      "label": "Animal Riders Only",
+      "src": "/signs/mandatory/animal-riders-only.jpg"
+    },
+    {
+      "label": "End Of Minimum Speed Limit",
+      "src": "/signs/mandatory/end-of-minimum-speed-limit.jpg"
+    },
+    {
+      "label": "Go Straight Ahead Only",
+      "src": "/signs/mandatory/go-straight-ahead-only.jpg"
+    },
+    {
+      "label": "Go Straight Turn Right Ahead",
+      "src": "/signs/mandatory/go-straight-turn-right-ahead.jpg"
+    },
+    {
+      "label": "Keep Left",
+      "src": "/signs/mandatory/keep-left.jpg"
+    },
+    {
+      "label": "Mandatory Snow Chains",
+      "src": "/signs/mandatory/mandatory-snow-chains.jpg"
+    },
+    {
+      "label": "Minimum Speed Limit",
+      "src": "/signs/mandatory/minimum-speed-limit.jpg"
+    },
+    {
+      "label": "Pass On Either Side",
+      "src": "/signs/mandatory/pass-on-either-side.jpg"
+    },
+    {
+      "label": "Pedestrians Only",
+      "src": "/signs/mandatory/pedestrians-only.jpg"
+    },
+    {
+      "label": "Roundabout",
+      "src": "/signs/mandatory/roundabout.jpg"
+    },
+    {
+      "label": "Turn Left Ahead",
+      "src": "/signs/mandatory/turn-left-ahead.jpg"
+    },
+    {
+      "label": "Turn Left Or Right Ahead",
+      "src": "/signs/mandatory/turn-left-or-right-ahead.jpg"
+    },
+    {
+      "label": "Turn Right",
+      "src": "/signs/mandatory/turn-right.jpg"
+    }
+  ],
+  "priority": [
+    {
+      "label": "Controlled Block",
+      "src": "/signs/priority/controlled-block.jpg"
+    },
+    {
+      "label": "End Of Priority Road",
+      "src": "/signs/priority/end-of-priority-road.jpg"
+    },
+    {
+      "label": "Give Way",
+      "src": "/signs/priority/give-way.jpg"
+    },
+    {
+      "label": "Go Ahead",
+      "src": "/signs/priority/go-ahead.jpg"
+    },
+    {
+      "label": "Image",
+      "src": "/signs/priority/image.jpg"
+    },
+    {
+      "label": "Priority From Your Direction",
+      "src": "/signs/priority/priority-from-your-direction.jpg"
+    },
+    {
+      "label": "Priority Road",
+      "src": "/signs/priority/priority-road.jpg"
+    },
+    {
+      "label": "Priority Traffic Opposite Direction",
+      "src": "/signs/priority/priority-traffic-opposite-direction.jpg"
+    },
+    {
+      "label": "Stop",
+      "src": "/signs/priority/stop.jpg"
+    }
+  ],
+  "information": [
+    {
+      "label": "Airport",
+      "src": "/signs/information/airport.jpg"
+    },
+    {
+      "label": "Bus Stop",
+      "src": "/signs/information/bus-stop.jpg"
+    },
+    {
+      "label": "Dead End Left",
+      "src": "/signs/information/dead-end-left.jpg"
+    },
+    {
+      "label": "Dead End Straight Ahead",
+      "src": "/signs/information/dead-end-straight-ahead.jpg"
+    },
+    {
+      "label": "Default Roundabout Lane",
+      "src": "/signs/information/default-roundabout-lane.jpg"
+    },
+    {
+      "label": "Direction Sign",
+      "src": "/signs/information/direction-sign.jpg"
+    },
+    {
+      "label": "Emergency Phone",
+      "src": "/signs/information/emergency-phone.jpg"
+    },
+    {
+      "label": "First Aid",
+      "src": "/signs/information/first-aid.jpg"
+    },
+    {
+      "label": "Highway",
+      "src": "/signs/information/highway.jpg"
+    },
+    {
+      "label": "One Way Street Left",
+      "src": "/signs/information/one-way-street-left.jpg"
+    },
+    {
+      "label": "One Way Street",
+      "src": "/signs/information/one-way-street.jpg"
+    },
+    {
+      "label": "Parking",
+      "src": "/signs/information/parking.jpg"
+    },
+    {
+      "label": "Pedestrian Crossing",
+      "src": "/signs/information/pedestrian-crossing.jpg"
+    },
+    {
+      "label": "Petrol Station",
+      "src": "/signs/information/petrol-station.jpg"
+    },
+    {
+      "label": "Recommended Speed",
+      "src": "/signs/information/recommended-speed.jpg"
+    },
+    {
+      "label": "Residential Area",
+      "src": "/signs/information/residential-area.jpg"
+    },
+    {
+      "label": "Taxi Parking",
+      "src": "/signs/information/taxi-parking.jpg"
+    }
+  ],
+  "road-markings": [
+    {
+      "label": "Directions Roundabout",
+      "src": "/signs/road-markings/directions-roundabout.jpg"
+    },
+    {
+      "label": "Entrances Exits Left Side",
+      "src": "/signs/road-markings/extrances-exits-left-side.jpg"
+    },
+    {
+      "label": "Give Way Traffic Mainroad",
+      "src": "/signs/road-markings/give-way-traffic-mainroad.jpg"
+    },
+    {
+      "label": "No Overtaking",
+      "src": "/signs/road-markings/no-overtaking-2.jpg"
+    },
+    {
+      "label": "No Overtaking",
+      "src": "/signs/road-markings/no-overtaking.jpg"
+    },
+    {
+      "label": "No Parking Waiting Overtaking",
+      "src": "/signs/road-markings/no-parking-waiting-overtaking.jpg"
+    },
+    {
+      "label": "Overtaking Allowed From Right",
+      "src": "/signs/road-markings/overtaking-allowed-from-right.jpg"
+    },
+    {
+      "label": "Overtaking Allowed",
+      "src": "/signs/road-markings/overtaking-allowed.jpg"
+    },
+    {
+      "label": "Side Line Carriageway No Parking Stopping",
+      "src": "/signs/road-markings/side-line-carriageway-no-parking-stopping.jpg"
+    },
+    {
+      "label": "Side Line Carriageway No Parking",
+      "src": "/signs/road-markings/side-line-carriageway-no-parking.jpg"
+    },
+    {
+      "label": "Side Line Carriageway No Parking",
+      "src": "/signs/road-markings/side-line-carriageway-no-parking2.jpg"
+    },
+    {
+      "label": "Stop Give Way",
+      "src": "/signs/road-markings/stop-give-way.jpg"
+    }
+  ],
+  "additional": [
+    {
+      "label": "Distance Level Crossing",
+      "src": "/signs/additional/distance-level-crossing.jpg"
+    },
+    {
+      "label": "Obstacle Left",
+      "src": "/signs/additional/obstacle-left.jpg"
+    },
+    {
+      "label": "Obstacle",
+      "src": "/signs/additional/obstacle.jpg"
+    },
+    {
+      "label": "Temporary Sharp Deviation",
+      "src": "/signs/additional/temporary-sharp-deviation.jpg"
+    }
+  ],
+  "signals": [
+    {
+      "label": "Stop All Traffic",
+      "src": "/signs/signals/stop-all-traffic.jpg"
+    },
+    {
+      "label": "Stop Traffic Approaching Front And Behind",
+      "src": "/signs/signals/stop-traffic-approaching-front-and-behind.jpg"
+    },
+    {
+      "label": "Stop Traffic Behind",
+      "src": "/signs/signals/stop-traffic-behind.jpg"
+    },
+    {
+      "label": "Stop Traffic From Front",
+      "src": "/signs/signals/stop-traffic-from-front.jpg"
+    },
+    {
+      "label": "Traffic Approaching From Behind",
+      "src": "/signs/signals/traffic-approaching-from-behind.jpg"
+    },
+    {
+      "label": "Traffic Approaching From Front",
+      "src": "/signs/signals/traffic-approaching-from-front.jpg"
+    },
+    {
+      "label": "Traffic Approaching From Side",
+      "src": "/signs/signals/traffic-approaching-from-side.jpg"
+    }
+  ]
+}

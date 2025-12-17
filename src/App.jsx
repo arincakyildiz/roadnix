@@ -1487,6 +1487,12 @@ const interactiveModules = [
     text:
       'Answer scenario-based questions about safe distances, human factors, rules, vehicle systems, and real-road logic.',
     icon: '📘'
+  },
+  {
+    title: 'Car Parts Guide & Quiz',
+    text:
+      'Explore interactive car hotspots (hood, brakes, lights, cabin) and test yourself with 30/30/30 easy-medium-hard questions about vehicle components.',
+    icon: '🚗'
   }
 ]
 
@@ -4067,8 +4073,8 @@ function App() {
                 <h2>{isTR ? 'Mücadeleni seç' : 'Choose your challenge'}</h2>
                 <p>
                   {isTR
-                    ? 'Aşağıdaki kartlardan doğrudan levha veya trafik bilgisi testlerine geçebilirsin.'
-                    : 'Jump directly to signs or knowledge quizzes via dedicated cards.'}
+                    ? 'Aşağıdaki kartlardan levha, trafik bilgisi veya araç parçaları testlerine doğrudan geçebilirsin.'
+                    : 'Jump directly to signs, knowledge, or car parts quizzes via dedicated cards.'}
                 </p>
               </div>
               <div className="quiz-cta-grid">
@@ -4099,6 +4105,21 @@ function App() {
                       {isTR
                         ? 'Senaryo temelli sorularla trafik kuralları ve güvenli sürüş bilgisini ölç.'
                         : 'Scenario-based driving theory and road science.'}
+                    </p>
+                  </div>
+                </button>
+                <button
+                  type="button"
+                  className="quiz-cta-card"
+                  onClick={() => handleStartQuizView('carparts')}
+                >
+                  <span>🚗</span>
+                  <div>
+                    <h3>{isTR ? 'Araç Parçaları Testini Başlat' : 'Launch Car Parts Quiz'}</h3>
+                    <p>
+                      {isTR
+                        ? 'Kaput, fren, far, kabin gibi parçaları tanı ve 30/30/30 soruda kendini ölç.'
+                        : 'Identify hood, brakes, lights, cabin components across 30/30/30 questions.'}
                     </p>
                   </div>
                 </button>

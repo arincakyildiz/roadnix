@@ -2135,11 +2135,21 @@ const finalCtaText =
   'This platform is your interactive guide to understanding vehicles, people, and roads in a safer, smarter way. Begin now and turn theory into real-world safe habits.'
 
 function App() {
+  const getInitialLang = () => {
+    if (typeof navigator === 'undefined') return 'tr'
+    const browserLang =
+      (navigator.languages && navigator.languages.length ? navigator.languages[0] : navigator.language) || ''
+    const normalized = browserLang.toLowerCase()
+    if (normalized.startsWith('tr')) return 'tr'
+    if (normalized.startsWith('en')) return 'en'
+    return 'en'
+  }
+
   const [menuOpen, setMenuOpen] = useState(false)
   const [navSolid, setNavSolid] = useState(false)
   const [matrixIndex, setMatrixIndex] = useState(0)
   const [showBackToTop, setShowBackToTop] = useState(false)
-  const [lang, setLang] = useState('tr') // 'tr' | 'en'
+  const [lang, setLang] = useState(getInitialLang) // 'tr' | 'en'
   const [activeView, setActiveView] = useState('home') // 'home' | 'quiz' | 'attention'
   const [quizType, setQuizType] = useState('signs') // 'signs' | 'knowledge' | 'carparts'
   const [quizStage, setQuizStage] = useState('setup') // 'setup' | 'question' | 'result'

@@ -899,7 +899,7 @@ button {
 
 .sign-gallery-grid article img {
   width: 100%;
-  max-width: 150px;
+  max-width: 180px;
   aspect-ratio: 1 / 1;
   object-fit: contain;
   border-radius: 14px;
@@ -2640,7 +2640,7 @@ footer p {
   }
   
   .sign-gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
     gap: 1rem;
   }
 }
@@ -2693,13 +2693,13 @@ footer p {
   }
   
   .sign-gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 0.95rem;
   }
   
   .sign-gallery-grid article img {
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
   }
   
   .sign-gallery-grid article p {
@@ -2795,13 +2795,13 @@ footer p {
   }
   
   .sign-gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
     gap: 0.9rem;
   }
   
   .sign-gallery-grid article img {
-    width: 110px;
-    height: 110px;
+    width: 135px;
+    height: 135px;
   }
   
   .sign-gallery-grid article p {
@@ -2948,8 +2948,8 @@ footer p {
   }
   
   .sign-gallery-grid article img {
-    width: 65px;
-    height: 65px;
+    width: 85px;
+    height: 85px;
   }
   
   .toggle-row {

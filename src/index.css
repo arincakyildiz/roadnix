@@ -1389,7 +1389,7 @@ footer p {
   padding: 3rem 3.5rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
 }
 
 .quiz-card h2 {
@@ -1512,10 +1512,7 @@ footer p {
   line-height: 1.5;
   font-weight: 500;
   color: var(--text);
-  text-align: center;
-  max-width: 820px;
-  margin-left: auto;
-  margin-right: auto;
+  text-align: left;
 }
 
 .quiz-visual {

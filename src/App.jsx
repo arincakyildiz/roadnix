@@ -1837,47 +1837,153 @@ function App() {
     // Tüm parçaları birleştir
     const allParts = [...carHotspots, ...extraCarParts]
 
+    // Örtüşen parçalar - bunlar için farklı soru tipleri kullanılacak
+    const overlappingParts = ['horn', 'seatbelts', 'battery', 'wipers']
+
+    // Özel soru verileri (örtüşen parçalar için)
+    const specialQuestions = {
+      horn: {
+        locationQ: { tr: 'Korna genellikle aracın neresinde bulunur?', en: 'Where is the horn typically located in a vehicle?' },
+        locationA: { tr: 'Ön ızgaranın arkasında', en: 'Behind the front grille' },
+        locationWrong: {
+          tr: ['Bagajda', 'Tavan içinde', 'Kapı panelinde'],
+          en: ['In the trunk', 'Inside the roof', 'In the door panel']
+        },
+        functionQ: { tr: 'Korna ne zaman kullanılmalıdır?', en: 'When should the horn be used?' },
+        functionA: { tr: 'Tehlike anında diğer sürücüleri uyarmak için', en: 'To warn other drivers in case of danger' },
+        functionWrong: {
+          tr: ['Selamlaşmak için', 'Müzik ritmi tutmak için', 'Sinirlendiğinizde'],
+          en: ['To greet others', 'To keep rhythm with music', 'When you are angry']
+        }
+      },
+      seatbelts: {
+        locationQ: { tr: 'Emniyet kemeri pretensioner (ön gerici) ne işe yarar?', en: 'What is the function of a seatbelt pretensioner?' },
+        locationA: { tr: 'Çarpışma anında kemeri sıkarak yolcuyu koltuğa sabitler', en: 'Tightens the belt during collision to secure the passenger' },
+        locationWrong: {
+          tr: ['Kemerin rengini değiştirir', 'Kemeri otomatik açar', 'Koltuğu ısıtır'],
+          en: ['Changes the belt color', 'Automatically opens the belt', 'Heats the seat']
+        },
+        functionQ: { tr: 'Emniyet kemeri ölüm riskini yaklaşık ne kadar azaltır?', en: 'By approximately how much does a seatbelt reduce the risk of death?' },
+        functionA: { tr: '%50', en: '50%' },
+        functionWrong: {
+          tr: ['%10', '%25', '%75'],
+          en: ['10%', '25%', '75%']
+        }
+      },
+      battery: {
+        locationQ: { tr: 'Araç aküsü genellikle kaç volt çıkış verir?', en: 'How many volts does a car battery typically output?' },
+        locationA: { tr: '12 volt', en: '12 volts' },
+        locationWrong: {
+          tr: ['6 volt', '24 volt', '48 volt'],
+          en: ['6 volts', '24 volts', '48 volts']
+        },
+        functionQ: { tr: 'Akü bittiğinde araçta ilk ne olur?', en: 'What happens first when the battery dies?' },
+        functionA: { tr: 'Motor çalışmaz (marş basmaz)', en: 'Engine won\'t start (starter won\'t turn)' },
+        functionWrong: {
+          tr: ['Farlar daha parlak yanar', 'Klima daha güçlü çalışır', 'Lastikler iner'],
+          en: ['Headlights become brighter', 'AC works stronger', 'Tires deflate']
+        }
+      },
+      wipers: {
+        locationQ: { tr: 'Silecek lastikleri ne sıklıkla değiştirilmelidir?', en: 'How often should wiper blades be replaced?' },
+        locationA: { tr: 'Her 6-12 ayda bir', en: 'Every 6-12 months' },
+        locationWrong: {
+          tr: ['Her 5 yılda bir', 'Sadece kırıldığında', 'Her ay'],
+          en: ['Every 5 years', 'Only when broken', 'Every month']
+        },
+        functionQ: { tr: 'Cam suyu ne işe yarar?', en: 'What is the purpose of washer fluid?' },
+        functionA: { tr: 'Ön camı temizleyerek görüşü artırır', en: 'Cleans the windshield to improve visibility' },
+        functionWrong: {
+          tr: ['Motoru soğutur', 'Frenleri yağlar', 'Lastik basıncını ayarlar'],
+          en: ['Cools the engine', 'Lubricates brakes', 'Adjusts tire pressure']
+        }
+      }
+    }
+
     allParts.forEach((part) => {
       // Diğer parçalardan yanlış şıklar için havuz
       const otherParts = allParts.filter((p) => p.key !== part.key)
-
-      // Soru türü 1: Açıklamadan parça adını bul
-      const wrongLabels1 = shuffleArray(otherParts).slice(0, 3)
       const correctLabel = isTR ? part.labelTr : part.labelEn
-      const wrongLabelAnswers = wrongLabels1.map((p) => isTR ? p.labelTr : p.labelEn)
-      const answers1 = shuffleArray([correctLabel, ...wrongLabelAnswers])
-
-      questions.push({
-        id: `carpart-name-${part.key}`,
-        question: isTR
-          ? `"${part.descTr}" - Bu aciklama hangi arac parcasina aittir?`
-          : `"${part.descEn}" - Which car part does this description belong to?`,
-        answers: answers1,
-        correctIndex: answers1.indexOf(correctLabel),
-        explanation: isTR
-          ? `Dogru cevap: ${part.labelTr}. ${part.descTr}`
-          : `Correct answer: ${part.labelEn}. ${part.descEn}`,
-        difficulty: 'easy'
-      })
-
-      // Soru türü 2: Parça adından açıklamayı bul
-      const wrongDescs = shuffleArray(otherParts).slice(0, 3)
       const correctDesc = isTR ? part.descTr : part.descEn
-      const wrongDescAnswers = wrongDescs.map((p) => isTR ? p.descTr : p.descEn)
-      const answers2 = shuffleArray([correctDesc, ...wrongDescAnswers])
 
-      questions.push({
-        id: `carpart-desc-${part.key}`,
-        question: isTR
-          ? `"${part.labelTr}" parcasinda neler bulunur?`
-          : `What is found in the "${part.labelEn}" section?`,
-        answers: answers2,
-        correctIndex: answers2.indexOf(correctDesc),
-        explanation: isTR
-          ? `${part.labelTr}: ${part.descTr}`
-          : `${part.labelEn}: ${part.descEn}`,
-        difficulty: 'medium'
-      })
+      // Örtüşen parçalar için özel sorular
+      if (overlappingParts.includes(part.key)) {
+        const special = specialQuestions[part.key]
+
+        // Özel Soru 1: Konum/Teknik bilgi sorusu
+        const specialAnswers1 = shuffleArray([
+          isTR ? special.locationA.tr : special.locationA.en,
+          ...(isTR ? special.locationWrong.tr : special.locationWrong.en)
+        ])
+        const correctSpecial1 = isTR ? special.locationA.tr : special.locationA.en
+
+        questions.push({
+          id: `carpart-special1-${part.key}`,
+          question: isTR ? special.locationQ.tr : special.locationQ.en,
+          answers: specialAnswers1,
+          correctIndex: specialAnswers1.indexOf(correctSpecial1),
+          explanation: isTR
+            ? `Doğru cevap: ${special.locationA.tr}`
+            : `Correct answer: ${special.locationA.en}`,
+          difficulty: 'medium'
+        })
+
+        // Özel Soru 2: Fonksiyon/Kullanım sorusu
+        const specialAnswers2 = shuffleArray([
+          isTR ? special.functionA.tr : special.functionA.en,
+          ...(isTR ? special.functionWrong.tr : special.functionWrong.en)
+        ])
+        const correctSpecial2 = isTR ? special.functionA.tr : special.functionA.en
+
+        questions.push({
+          id: `carpart-special2-${part.key}`,
+          question: isTR ? special.functionQ.tr : special.functionQ.en,
+          answers: specialAnswers2,
+          correctIndex: specialAnswers2.indexOf(correctSpecial2),
+          explanation: isTR
+            ? `Doğru cevap: ${special.functionA.tr}`
+            : `Correct answer: ${special.functionA.en}`,
+          difficulty: 'hard'
+        })
+      } else {
+        // Normal parçalar için standart sorular
+
+        // Soru türü 1: Açıklamadan parça adını bul
+        const wrongLabels1 = shuffleArray(otherParts).slice(0, 3)
+        const wrongLabelAnswers = wrongLabels1.map((p) => isTR ? p.labelTr : p.labelEn)
+        const answers1 = shuffleArray([correctLabel, ...wrongLabelAnswers])
+
+        questions.push({
+          id: `carpart-name-${part.key}`,
+          question: isTR
+            ? `"${part.descTr}" - Bu açıklama hangi araç parçasına aittir?`
+            : `"${part.descEn}" - Which car part does this description belong to?`,
+          answers: answers1,
+          correctIndex: answers1.indexOf(correctLabel),
+          explanation: isTR
+            ? `Doğru cevap: ${part.labelTr}. ${part.descTr}`
+            : `Correct answer: ${part.labelEn}. ${part.descEn}`,
+          difficulty: 'easy'
+        })
+
+        // Soru türü 2: Parça adından açıklamayı bul
+        const wrongDescs = shuffleArray(otherParts).slice(0, 3)
+        const wrongDescAnswers = wrongDescs.map((p) => isTR ? p.descTr : p.descEn)
+        const answers2 = shuffleArray([correctDesc, ...wrongDescAnswers])
+
+        questions.push({
+          id: `carpart-desc-${part.key}`,
+          question: isTR
+            ? `"${part.labelTr}" parçasında neler bulunur?`
+            : `What is found in the "${part.labelEn}" section?`,
+          answers: answers2,
+          correctIndex: answers2.indexOf(correctDesc),
+          explanation: isTR
+            ? `${part.labelTr}: ${part.descTr}`
+            : `${part.labelEn}: ${part.descEn}`,
+          difficulty: 'medium'
+        })
+      }
     })
 
     return shuffleArray(questions)

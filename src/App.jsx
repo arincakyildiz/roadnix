@@ -2180,6 +2180,7 @@ function App() {
 
   const attentionTimerRef = useRef(null)
   const attentionShapeTimerRef = useRef(null)
+  const quizPageRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -2200,6 +2201,15 @@ function App() {
 
     return () => clearInterval(interval)
   }, [])
+
+  // Quiz soru ekranına geçince görünür alana kaydır
+  useEffect(() => {
+    if (quizStage !== 'question') return undefined
+    if (!quizPageRef.current) return undefined
+
+    quizPageRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    return undefined
+  }, [quizStage])
 
   const handleNavClick = (href) => {
     const el = document.querySelector(href)
@@ -3149,7 +3159,7 @@ function App() {
 
       <main onClick={menuOpen ? () => setMenuOpen(false) : undefined}>
         {isQuizMode ? (
-          <section className="quiz-page" id="quiz-page">
+          <section className="quiz-page" id="quiz-page" ref={quizPageRef}>
             <div className="quiz-page-header">
               <button type="button" className="link-button back-link" onClick={handleExitQuiz}>
                 ← {isTR ? 'Ana sayfaya dön' : 'Back to home'}

@@ -19,7 +19,8 @@ const navLinks = [
   { key: 'signs', href: '#sign-library', type: 'anchor' },
   { key: 'attention', href: '#attention', type: 'attention' },
   { key: 'signsQuiz', href: '#quiz', type: 'quiz', quizKey: 'signs' },
-  { key: 'knowledgeQuiz', href: '#quiz', type: 'quiz', quizKey: 'knowledge' }
+  { key: 'knowledgeQuiz', href: '#quiz', type: 'quiz', quizKey: 'knowledge' },
+  { key: 'carpartsQuiz', href: '#quiz', type: 'quiz', quizKey: 'carparts' }
 ]
 
 const navLabels = {
@@ -29,7 +30,8 @@ const navLabels = {
     signs: 'Traffic Signs Library',
     attention: 'Attention Test',
     signsQuiz: 'Signs Quiz',
-    knowledgeQuiz: 'Traffic Knowledge Quiz'
+    knowledgeQuiz: 'Traffic Knowledge Quiz',
+    carpartsQuiz: 'Car Parts Quiz'
   },
   tr: {
     home: 'Ana Sayfa',
@@ -37,7 +39,8 @@ const navLabels = {
     signs: 'Trafik Levhaları Kütüphanesi',
     attention: 'Dikkat Testi',
     signsQuiz: 'Levha Testi',
-    knowledgeQuiz: 'Trafik Bilgisi Testi'
+    knowledgeQuiz: 'Trafik Bilgisi Testi',
+    carpartsQuiz: 'Araç Parçaları Testi'
   }
 }
 

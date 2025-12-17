@@ -1310,10 +1310,14 @@ const allSignItems = Object.entries(signAssets).flatMap(([category, items]) =>
 )
 
 const generatedSignQuestions = allSignItems.map((sign, index) => {
+  // Zorluk dağılımı: Easy (30+), Medium (30+), Hard (30+)
+  // information (17) + priority (9) + mandatory (13) = 39 easy
+  // warning (47) = 47 medium
+  // prohibitory (34) + road-markings (12) + signals (7) + additional (4) = 57 hard
   const difficultyByCategory =
-    sign.category === 'information' || sign.category === 'priority'
+    sign.category === 'information' || sign.category === 'priority' || sign.category === 'mandatory'
       ? 'easy'
-      : sign.category === 'mandatory' || sign.category === 'warning'
+      : sign.category === 'warning'
         ? 'medium'
         : 'hard'
 
@@ -2102,159 +2106,517 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  // Araç parçaları quizi için soru oluştur (30+ soru)
+  // Araç parçaları quizi için soru oluştur (90 soru: 30 easy, 30 medium, 30 hard)
   const generateCarPartsQuestions = () => {
     const questions = []
-    // Tüm parçaları birleştir
     const allParts = [...carHotspots, ...extraCarParts]
 
-    // Örtüşen parçalar - bunlar için farklı soru tipleri kullanılacak
-    const overlappingParts = ['horn', 'seatbelts', 'battery', 'wipers']
-
-    // Özel soru verileri (örtüşen parçalar için)
-    const specialQuestions = {
-      horn: {
-        locationQ: { tr: 'Korna genellikle aracın neresinde bulunur?', en: 'Where is the horn typically located in a vehicle?' },
-        locationA: { tr: 'Ön ızgaranın arkasında', en: 'Behind the front grille' },
-        locationWrong: {
-          tr: ['Bagajda', 'Tavan içinde', 'Kapı panelinde'],
-          en: ['In the trunk', 'Inside the roof', 'In the door panel']
-        },
-        functionQ: { tr: 'Korna ne zaman kullanılmalıdır?', en: 'When should the horn be used?' },
-        functionA: { tr: 'Tehlike anında diğer sürücüleri uyarmak için', en: 'To warn other drivers in case of danger' },
-        functionWrong: {
-          tr: ['Selamlaşmak için', 'Müzik ritmi tutmak için', 'Sinirlendiğinizde'],
-          en: ['To greet others', 'To keep rhythm with music', 'When you are angry']
-        }
-      },
-      seatbelts: {
-        locationQ: { tr: 'Emniyet kemeri pretensioner (ön gerici) ne işe yarar?', en: 'What is the function of a seatbelt pretensioner?' },
-        locationA: { tr: 'Çarpışma anında kemeri sıkarak yolcuyu koltuğa sabitler', en: 'Tightens the belt during collision to secure the passenger' },
-        locationWrong: {
-          tr: ['Kemerin rengini değiştirir', 'Kemeri otomatik açar', 'Koltuğu ısıtır'],
-          en: ['Changes the belt color', 'Automatically opens the belt', 'Heats the seat']
-        },
-        functionQ: { tr: 'Emniyet kemeri ölüm riskini yaklaşık ne kadar azaltır?', en: 'By approximately how much does a seatbelt reduce the risk of death?' },
-        functionA: { tr: '%50', en: '50%' },
-        functionWrong: {
-          tr: ['%10', '%25', '%75'],
-          en: ['10%', '25%', '75%']
-        }
-      },
-      battery: {
-        locationQ: { tr: 'Araç aküsü genellikle kaç volt çıkış verir?', en: 'How many volts does a car battery typically output?' },
-        locationA: { tr: '12 volt', en: '12 volts' },
-        locationWrong: {
-          tr: ['6 volt', '24 volt', '48 volt'],
-          en: ['6 volts', '24 volts', '48 volts']
-        },
-        functionQ: { tr: 'Akü bittiğinde araçta ilk ne olur?', en: 'What happens first when the battery dies?' },
-        functionA: { tr: 'Motor çalışmaz (marş basmaz)', en: 'Engine won\'t start (starter won\'t turn)' },
-        functionWrong: {
-          tr: ['Farlar daha parlak yanar', 'Klima daha güçlü çalışır', 'Lastikler iner'],
-          en: ['Headlights become brighter', 'AC works stronger', 'Tires deflate']
-        }
-      },
-      wipers: {
-        locationQ: { tr: 'Silecek lastikleri ne sıklıkla değiştirilmelidir?', en: 'How often should wiper blades be replaced?' },
-        locationA: { tr: 'Her 6-12 ayda bir', en: 'Every 6-12 months' },
-        locationWrong: {
-          tr: ['Her 5 yılda bir', 'Sadece kırıldığında', 'Her ay'],
-          en: ['Every 5 years', 'Only when broken', 'Every month']
-        },
-        functionQ: { tr: 'Cam suyu ne işe yarar?', en: 'What is the purpose of washer fluid?' },
-        functionA: { tr: 'Ön camı temizleyerek görüşü artırır', en: 'Cleans the windshield to improve visibility' },
-        functionWrong: {
-          tr: ['Motoru soğutur', 'Frenleri yağlar', 'Lastik basıncını ayarlar'],
-          en: ['Cools the engine', 'Lubricates brakes', 'Adjusts tire pressure']
-        }
-      }
-    }
-
+    // Tüm parçalar için temel sorular (Easy + Medium)
     allParts.forEach((part) => {
-      // Diğer parçalardan yanlış şıklar için havuz
       const otherParts = allParts.filter((p) => p.key !== part.key)
       const correctLabel = isTR ? part.labelTr : part.labelEn
       const correctDesc = isTR ? part.descTr : part.descEn
 
-      // Örtüşen parçalar için özel sorular
-      if (overlappingParts.includes(part.key)) {
-        const special = specialQuestions[part.key]
+      // EASY: Açıklamadan parça adını bul
+      const wrongLabels1 = shuffleArray(otherParts).slice(0, 3)
+      const wrongLabelAnswers = wrongLabels1.map((p) => isTR ? p.labelTr : p.labelEn)
+      const answers1 = shuffleArray([correctLabel, ...wrongLabelAnswers])
 
-        // Özel Soru 1: Konum/Teknik bilgi sorusu
-        const specialAnswers1 = shuffleArray([
-          isTR ? special.locationA.tr : special.locationA.en,
-          ...(isTR ? special.locationWrong.tr : special.locationWrong.en)
-        ])
-        const correctSpecial1 = isTR ? special.locationA.tr : special.locationA.en
+      questions.push({
+        id: `carpart-name-${part.key}`,
+        question: isTR
+          ? `"${part.descTr}" - Bu açıklama hangi araç parçasına aittir?`
+          : `"${part.descEn}" - Which car part does this description belong to?`,
+        answers: answers1,
+        correctIndex: answers1.indexOf(correctLabel),
+        explanation: isTR
+          ? `Doğru cevap: ${part.labelTr}. ${part.descTr}`
+          : `Correct answer: ${part.labelEn}. ${part.descEn}`,
+        difficulty: 'easy'
+      })
 
-        questions.push({
-          id: `carpart-special1-${part.key}`,
-          question: isTR ? special.locationQ.tr : special.locationQ.en,
-          answers: specialAnswers1,
-          correctIndex: specialAnswers1.indexOf(correctSpecial1),
-          explanation: isTR
-            ? `Doğru cevap: ${special.locationA.tr}`
-            : `Correct answer: ${special.locationA.en}`,
-          difficulty: 'medium'
-        })
+      // MEDIUM: Parça adından açıklamayı bul
+      const wrongDescs = shuffleArray(otherParts).slice(0, 3)
+      const wrongDescAnswers = wrongDescs.map((p) => isTR ? p.descTr : p.descEn)
+      const answers2 = shuffleArray([correctDesc, ...wrongDescAnswers])
 
-        // Özel Soru 2: Fonksiyon/Kullanım sorusu
-        const specialAnswers2 = shuffleArray([
-          isTR ? special.functionA.tr : special.functionA.en,
-          ...(isTR ? special.functionWrong.tr : special.functionWrong.en)
-        ])
-        const correctSpecial2 = isTR ? special.functionA.tr : special.functionA.en
+      questions.push({
+        id: `carpart-desc-${part.key}`,
+        question: isTR
+          ? `"${part.labelTr}" parçasında neler bulunur?`
+          : `What is found in the "${part.labelEn}" section?`,
+        answers: answers2,
+        correctIndex: answers2.indexOf(correctDesc),
+        explanation: isTR
+          ? `${part.labelTr}: ${part.descTr}`
+          : `${part.labelEn}: ${part.descEn}`,
+        difficulty: 'medium'
+      })
+    })
 
-        questions.push({
-          id: `carpart-special2-${part.key}`,
-          question: isTR ? special.functionQ.tr : special.functionQ.en,
-          answers: specialAnswers2,
-          correctIndex: specialAnswers2.indexOf(correctSpecial2),
-          explanation: isTR
-            ? `Doğru cevap: ${special.functionA.tr}`
-            : `Correct answer: ${special.functionA.en}`,
-          difficulty: 'hard'
-        })
-      } else {
-        // Normal parçalar için standart sorular
-
-        // Soru türü 1: Açıklamadan parça adını bul
-        const wrongLabels1 = shuffleArray(otherParts).slice(0, 3)
-        const wrongLabelAnswers = wrongLabels1.map((p) => isTR ? p.labelTr : p.labelEn)
-        const answers1 = shuffleArray([correctLabel, ...wrongLabelAnswers])
-
-        questions.push({
-          id: `carpart-name-${part.key}`,
-          question: isTR
-            ? `"${part.descTr}" - Bu açıklama hangi araç parçasına aittir?`
-            : `"${part.descEn}" - Which car part does this description belong to?`,
-          answers: answers1,
-          correctIndex: answers1.indexOf(correctLabel),
-          explanation: isTR
-            ? `Doğru cevap: ${part.labelTr}. ${part.descTr}`
-            : `Correct answer: ${part.labelEn}. ${part.descEn}`,
-          difficulty: 'easy'
-        })
-
-        // Soru türü 2: Parça adından açıklamayı bul
-        const wrongDescs = shuffleArray(otherParts).slice(0, 3)
-        const wrongDescAnswers = wrongDescs.map((p) => isTR ? p.descTr : p.descEn)
-        const answers2 = shuffleArray([correctDesc, ...wrongDescAnswers])
-
-        questions.push({
-          id: `carpart-desc-${part.key}`,
-          question: isTR
-            ? `"${part.labelTr}" parçasında neler bulunur?`
-            : `What is found in the "${part.labelEn}" section?`,
-          answers: answers2,
-          correctIndex: answers2.indexOf(correctDesc),
-          explanation: isTR
-            ? `${part.labelTr}: ${part.descTr}`
-            : `${part.labelEn}: ${part.descEn}`,
-          difficulty: 'medium'
-        })
+    // HARD sorular için detaylı teknik bilgi havuzu
+    const hardQuestions = [
+      {
+        id: 'hard-brake-warning',
+        questionTr: 'Fren balatası aşındığında hangi belirti görülür?',
+        questionEn: 'What symptom indicates worn brake pads?',
+        correctTr: 'Fren yaparken metalik cızırtı sesi',
+        correctEn: 'Metallic squealing sound when braking',
+        wrongTr: ['Motor gücü azalır', 'Yakıt tüketimi artar', 'Direksiyon titrer'],
+        wrongEn: ['Engine power decreases', 'Fuel consumption increases', 'Steering vibrates']
+      },
+      {
+        id: 'hard-tire-pressure-effect',
+        questionTr: 'Düşük lastik basıncı aracı nasıl etkiler?',
+        questionEn: 'How does low tire pressure affect the vehicle?',
+        correctTr: 'Yakıt tüketimi artar ve lastik kenarları aşınır',
+        correctEn: 'Fuel consumption increases and tire edges wear',
+        wrongTr: ['Motor daha sessiz çalışır', 'Frenler daha iyi tutar', 'Süspansiyon sertleşir'],
+        wrongEn: ['Engine runs quieter', 'Brakes grip better', 'Suspension becomes stiffer']
+      },
+      {
+        id: 'hard-coolant-check',
+        questionTr: 'Antifriz seviyesi ne zaman kontrol edilmelidir?',
+        questionEn: 'When should coolant level be checked?',
+        correctTr: 'Motor soğukken',
+        correctEn: 'When engine is cold',
+        wrongTr: ['Motor sıcakken', 'Araç çalışırken', 'Uzun yolculuktan hemen sonra'],
+        wrongEn: ['When engine is hot', 'While car is running', 'Right after a long trip']
+      },
+      {
+        id: 'hard-alternator-failure',
+        questionTr: 'Alternatör arızalandığında ne olur?',
+        questionEn: 'What happens when the alternator fails?',
+        correctTr: 'Akü şarj olmaz ve araç durur',
+        correctEn: 'Battery does not charge and car stops',
+        wrongTr: ['Motor daha hızlı çalışır', 'Klima güçlenir', 'Farlar daha parlak yanar'],
+        wrongEn: ['Engine runs faster', 'AC becomes stronger', 'Headlights become brighter']
+      },
+      {
+        id: 'hard-oil-color',
+        questionTr: 'Motor yağının rengi ne zaman değişim gerektiğini gösterir?',
+        questionEn: 'When does engine oil color indicate need for change?',
+        correctTr: 'Koyu siyah ve grenli görünüm',
+        correctEn: 'Dark black and gritty appearance',
+        wrongTr: ['Açık kahverengi', 'Şeffaf sarı', 'Parlak altın rengi'],
+        wrongEn: ['Light brown', 'Transparent yellow', 'Bright golden color']
+      },
+      {
+        id: 'hard-suspension-worn',
+        questionTr: 'Amortisör aşınmasının belirtisi nedir?',
+        questionEn: 'What is a sign of worn shock absorbers?',
+        correctTr: 'Araç tümseklerde aşırı zıplar ve sallanır',
+        correctEn: 'Car bounces excessively over bumps and sways',
+        wrongTr: ['Motor gürültüsü artar', 'Farlar titrer', 'Kapılar zor açılır'],
+        wrongEn: ['Engine noise increases', 'Headlights flicker', 'Doors are hard to open']
+      },
+      {
+        id: 'hard-transmission-slip',
+        questionTr: 'Şanzıman kayması ne demektir?',
+        questionEn: 'What does transmission slipping mean?',
+        correctTr: 'Vites değişirken güç kaybı ve RPM artışı',
+        correctEn: 'Power loss and RPM increase during gear changes',
+        wrongTr: ['Frenler tutmaz', 'Direksiyon döner', 'Lastikler patlar'],
+        wrongEn: ['Brakes do not hold', 'Steering turns', 'Tires burst']
+      },
+      {
+        id: 'hard-radiator-leak',
+        questionTr: 'Radyatör sızıntısı nasıl tespit edilir?',
+        questionEn: 'How is a radiator leak detected?',
+        correctTr: 'Araç altında yeşil/turuncu sıvı birikintisi',
+        correctEn: 'Green/orange fluid puddle under the car',
+        wrongTr: ['Egzozdan beyaz duman', 'Motor titremesi', 'Far parlaklığı azalması'],
+        wrongEn: ['White smoke from exhaust', 'Engine vibration', 'Headlight dimming']
+      },
+      {
+        id: 'hard-catalytic-failure',
+        questionTr: 'Katalitik konvertör arızasının belirtisi nedir?',
+        questionEn: 'What is a symptom of catalytic converter failure?',
+        correctTr: 'Çürük yumurta kokusu ve güç kaybı',
+        correctEn: 'Rotten egg smell and power loss',
+        wrongTr: ['Lastikler çabuk aşınır', 'Kapılar kilitlenmez', 'Cam buğulanır'],
+        wrongEn: ['Tires wear quickly', 'Doors do not lock', 'Windows fog up']
+      },
+      {
+        id: 'hard-power-steering',
+        questionTr: 'Hidrolik direksiyon yağı azaldığında ne olur?',
+        questionEn: 'What happens when power steering fluid is low?',
+        correctTr: 'Direksiyon ağırlaşır ve dönerken ses çıkar',
+        correctEn: 'Steering becomes heavy and makes noise when turning',
+        wrongTr: ['Frenler sertleşir', 'Motor duraklar', 'Klimadan koku gelir'],
+        wrongEn: ['Brakes become stiff', 'Engine stalls', 'AC smells bad']
+      },
+      {
+        id: 'hard-timing-belt',
+        questionTr: 'Triger kayışı ne sıklıkla değiştirilmelidir?',
+        questionEn: 'How often should the timing belt be replaced?',
+        correctTr: '60.000-100.000 km arasında veya üretici önerisine göre',
+        correctEn: 'Between 60,000-100,000 km or per manufacturer recommendation',
+        wrongTr: ['Her yağ değişiminde', 'Her 10.000 km\'de', 'Sadece koptuğunda'],
+        wrongEn: ['Every oil change', 'Every 10,000 km', 'Only when it breaks']
+      },
+      {
+        id: 'hard-abs-light',
+        questionTr: 'ABS uyarı lambası yanık kalırsa ne yapılmalı?',
+        questionEn: 'What should be done if ABS warning light stays on?',
+        correctTr: 'En kısa sürede servise götürülmeli, normal fren çalışır ama ABS devre dışı',
+        correctEn: 'Take to service soon, normal brakes work but ABS is disabled',
+        wrongTr: ['Görmezden gelinebilir', 'Aracı kullanmayı bırakın', 'Sigorta değiştirin'],
+        wrongEn: ['Can be ignored', 'Stop using the car', 'Replace fuse']
+      },
+      {
+        id: 'hard-spark-plug',
+        questionTr: 'Buji arızası nasıl anlaşılır?',
+        questionEn: 'How is spark plug failure detected?',
+        correctTr: 'Motor rölantide titrer ve hızlanmada aksama olur',
+        correctEn: 'Engine shakes at idle and hesitates when accelerating',
+        wrongTr: ['Farlar söner', 'Kapılar açılmaz', 'Klima çalışmaz'],
+        wrongEn: ['Headlights turn off', 'Doors do not open', 'AC does not work']
+      },
+      {
+        id: 'hard-clutch-worn',
+        questionTr: 'Debriyaj aşınmasının belirtisi nedir?',
+        questionEn: 'What indicates clutch wear?',
+        correctTr: 'Debriyaj pedalı yükseğe çıkması ve yanık koku',
+        correctEn: 'Clutch pedal biting point rises and burning smell',
+        wrongTr: ['Fren pedalı sertleşir', 'Gaz pedalı titrer', 'Direksiyon kaçırır'],
+        wrongEn: ['Brake pedal stiffens', 'Gas pedal vibrates', 'Steering pulls']
+      },
+      {
+        id: 'hard-wheel-bearing',
+        questionTr: 'Bilyalı rulman arızasının belirtisi nedir?',
+        questionEn: 'What is a symptom of wheel bearing failure?',
+        correctTr: 'Hıza bağlı uğultu sesi ve tekerlek oynaklığı',
+        correctEn: 'Speed-dependent humming noise and wheel play',
+        wrongTr: ['Motor gücü azalır', 'Vites takılmaz', 'Far ışığı azalır'],
+        wrongEn: ['Engine power drops', 'Gears do not engage', 'Headlight dims']
+      },
+      {
+        id: 'hard-fuel-filter',
+        questionTr: 'Yakıt filtresi tıkandığında ne olur?',
+        questionEn: 'What happens when fuel filter is clogged?',
+        correctTr: 'Motor gücü düşer, hızlanma zorlaşır, çalıştırma güçleşir',
+        correctEn: 'Engine power drops, acceleration is difficult, hard to start',
+        wrongTr: ['Frenler tutmaz', 'Klimadan su akar', 'Farlar yanıp söner'],
+        wrongEn: ['Brakes fail', 'Water leaks from AC', 'Headlights flicker']
+      },
+      {
+        id: 'hard-air-filter',
+        questionTr: 'Hava filtresi ne zaman değiştirilmelidir?',
+        questionEn: 'When should the air filter be replaced?',
+        correctTr: 'Her 15.000-30.000 km\'de veya kirli göründüğünde',
+        correctEn: 'Every 15,000-30,000 km or when visibly dirty',
+        wrongTr: ['Her hafta', 'Sadece muayenede', 'Her 100.000 km\'de'],
+        wrongEn: ['Every week', 'Only at inspection', 'Every 100,000 km']
+      },
+      {
+        id: 'hard-battery-life',
+        questionTr: 'Araç aküsünün ortalama ömrü ne kadardır?',
+        questionEn: 'What is the average lifespan of a car battery?',
+        correctTr: '3-5 yıl',
+        correctEn: '3-5 years',
+        wrongTr: ['1 yıl', '10-15 yıl', 'Sınırsız'],
+        wrongEn: ['1 year', '10-15 years', 'Unlimited']
+      },
+      {
+        id: 'hard-thermostat-stuck',
+        questionTr: 'Termostat açık pozisyonda takılı kalırsa ne olur?',
+        questionEn: 'What happens if thermostat is stuck open?',
+        correctTr: 'Motor optimum sıcaklığa ulaşamaz, ısıtıcı zayıf çalışır',
+        correctEn: 'Engine cannot reach optimal temperature, heater works poorly',
+        wrongTr: ['Motor aşırı ısınır', 'Yakıt tüketimi azalır', 'Frenler güçlenir'],
+        wrongEn: ['Engine overheats', 'Fuel consumption decreases', 'Brakes become stronger']
+      },
+      {
+        id: 'hard-cv-joint',
+        questionTr: 'Aks kafası (CV joint) arızası nasıl anlaşılır?',
+        questionEn: 'How is CV joint failure detected?',
+        correctTr: 'Dönüşlerde tıkırtı sesi',
+        correctEn: 'Clicking sound when turning',
+        wrongTr: ['Motor titremesi', 'Far yanıp sönmesi', 'Kapı gıcırtısı'],
+        wrongEn: ['Engine vibration', 'Headlight flickering', 'Door squeaking']
+      },
+      {
+        id: 'hard-oxygen-sensor',
+        questionTr: 'Oksijen sensörü arızalandığında ne olur?',
+        questionEn: 'What happens when oxygen sensor fails?',
+        correctTr: 'Yakıt tüketimi artar ve egzoz emisyonları yükselir',
+        correctEn: 'Fuel consumption increases and exhaust emissions rise',
+        wrongTr: ['Motor durur', 'Farlar söner', 'Kapılar kilitlenmez'],
+        wrongEn: ['Engine stops', 'Headlights turn off', 'Doors do not lock']
+      },
+      {
+        id: 'hard-egr-valve',
+        questionTr: 'EGR valfi ne işe yarar?',
+        questionEn: 'What is the function of the EGR valve?',
+        correctTr: 'Egzoz gazlarını geri döndürerek emisyonları azaltır',
+        correctEn: 'Reduces emissions by recirculating exhaust gases',
+        wrongTr: ['Yakıtı pompalar', 'Havayı filtreler', 'Yağı soğutur'],
+        wrongEn: ['Pumps fuel', 'Filters air', 'Cools oil']
+      },
+      {
+        id: 'hard-differential',
+        questionTr: 'Diferansiyel ne işe yarar?',
+        questionEn: 'What is the function of the differential?',
+        correctTr: 'Virajlarda tekerleklerin farklı hızda dönmesini sağlar',
+        correctEn: 'Allows wheels to rotate at different speeds in turns',
+        wrongTr: ['Motoru soğutur', 'Frenleri güçlendirir', 'Direksiyonu hafifletir'],
+        wrongEn: ['Cools the engine', 'Strengthens brakes', 'Lightens steering']
+      },
+      {
+        id: 'hard-turbo-lag',
+        questionTr: 'Turbo lag nedir?',
+        questionEn: 'What is turbo lag?',
+        correctTr: 'Gaz pedalına bastıktan sonra turbo basıncının gecikmeli gelmesi',
+        correctEn: 'Delay in turbo boost after pressing the accelerator',
+        wrongTr: ['Turbo arızası', 'Turbo kapatma', 'Turbo soğutma'],
+        wrongEn: ['Turbo failure', 'Turbo shutdown', 'Turbo cooling']
+      },
+      {
+        id: 'hard-intercooler',
+        questionTr: 'Intercooler ne işe yarar?',
+        questionEn: 'What is the function of an intercooler?',
+        correctTr: 'Turbodan gelen sıkıştırılmış havayı soğutur',
+        correctEn: 'Cools compressed air from the turbo',
+        wrongTr: ['Motoru soğutur', 'Kabin havasını soğutur', 'Frenleri soğutur'],
+        wrongEn: ['Cools the engine', 'Cools cabin air', 'Cools the brakes']
+      },
+      {
+        id: 'hard-dpf-filter',
+        questionTr: 'DPF (Dizel Partikül Filtresi) tıkandığında ne olur?',
+        questionEn: 'What happens when DPF (Diesel Particulate Filter) is clogged?',
+        correctTr: 'Motor gücü düşer, uyarı lambası yanar, rejenerasyon gerekir',
+        correctEn: 'Engine power drops, warning light comes on, regeneration needed',
+        wrongTr: ['Hiçbir şey olmaz', 'Motor hızlanır', 'Yakıt tüketimi azalır'],
+        wrongEn: ['Nothing happens', 'Engine speeds up', 'Fuel consumption decreases']
+      },
+      {
+        id: 'hard-mass-air-flow',
+        questionTr: 'Kütle hava akış sensörü (MAF) ne ölçer?',
+        questionEn: 'What does the Mass Air Flow (MAF) sensor measure?',
+        correctTr: 'Motora giren hava miktarını',
+        correctEn: 'Amount of air entering the engine',
+        wrongTr: ['Egzoz gazı sıcaklığını', 'Yağ basıncını', 'Lastik basıncını'],
+        wrongEn: ['Exhaust gas temperature', 'Oil pressure', 'Tire pressure']
+      },
+      {
+        id: 'hard-crankshaft-sensor',
+        questionTr: 'Krank mili sensörü arızalanırsa ne olur?',
+        questionEn: 'What happens if the crankshaft sensor fails?',
+        correctTr: 'Motor çalışmaz veya çalışırken durur',
+        correctEn: 'Engine will not start or stalls while running',
+        wrongTr: ['Sadece farlar söner', 'Kapılar açılmaz', 'Klima çalışmaz'],
+        wrongEn: ['Only headlights turn off', 'Doors do not open', 'AC does not work']
+      },
+      {
+        id: 'hard-head-gasket',
+        questionTr: 'Silindir kapak contası atladığında ne olur?',
+        questionEn: 'What happens when the head gasket blows?',
+        correctTr: 'Antifriz yağa karışır, egzozdan beyaz duman çıkar, motor aşırı ısınır',
+        correctEn: 'Coolant mixes with oil, white smoke from exhaust, engine overheats',
+        wrongTr: ['Sadece far söner', 'Lastikler iner', 'Kapılar kilitlenmez'],
+        wrongEn: ['Only headlights turn off', 'Tires deflate', 'Doors do not lock']
       }
+    ]
+
+    // Hard soruları ekle
+    hardQuestions.forEach((hq) => {
+      const correctAnswer = isTR ? hq.correctTr : hq.correctEn
+      const wrongAnswers = isTR ? hq.wrongTr : hq.wrongEn
+      const allAnswers = shuffleArray([correctAnswer, ...wrongAnswers])
+
+      questions.push({
+        id: hq.id,
+        question: isTR ? hq.questionTr : hq.questionEn,
+        answers: allAnswers,
+        correctIndex: allAnswers.indexOf(correctAnswer),
+        explanation: isTR ? `Doğru cevap: ${hq.correctTr}` : `Correct answer: ${hq.correctEn}`,
+        difficulty: 'hard'
+      })
+    })
+
+    // Ek Easy sorular (parça tanıma varyasyonları)
+    const easyExtras = [
+      {
+        id: 'easy-engine-location',
+        questionTr: 'Motor genellikle aracın neresinde bulunur?',
+        questionEn: 'Where is the engine typically located in a car?',
+        correctTr: 'Ön kaputun altında',
+        correctEn: 'Under the front hood',
+        wrongTr: ['Bagajda', 'Tavanda', 'Kapıların içinde'],
+        wrongEn: ['In the trunk', 'On the roof', 'Inside the doors']
+      },
+      {
+        id: 'easy-steering-function',
+        questionTr: 'Direksiyon simidi ne için kullanılır?',
+        questionEn: 'What is the steering wheel used for?',
+        correctTr: 'Aracın yönünü kontrol etmek için',
+        correctEn: 'To control the direction of the vehicle',
+        wrongTr: ['Hızı kontrol etmek için', 'Müzik çalmak için', 'Kapıları açmak için'],
+        wrongEn: ['To control speed', 'To play music', 'To open doors']
+      },
+      {
+        id: 'easy-brake-pedal',
+        questionTr: 'Fren pedalı ne işe yarar?',
+        questionEn: 'What is the brake pedal for?',
+        correctTr: 'Aracı yavaşlatmak ve durdurmak için',
+        correctEn: 'To slow down and stop the vehicle',
+        wrongTr: ['Hızlanmak için', 'Vites değiştirmek için', 'Korna çalmak için'],
+        wrongEn: ['To accelerate', 'To change gears', 'To honk']
+      },
+      {
+        id: 'easy-gas-pedal',
+        questionTr: 'Gaz pedalı ne işe yarar?',
+        questionEn: 'What is the accelerator pedal for?',
+        correctTr: 'Aracı hızlandırmak için',
+        correctEn: 'To accelerate the vehicle',
+        wrongTr: ['Fren yapmak için', 'Vites değiştirmek için', 'Far açmak için'],
+        wrongEn: ['To brake', 'To change gears', 'To turn on headlights']
+      },
+      {
+        id: 'easy-headlights',
+        questionTr: 'Farlar ne işe yarar?',
+        questionEn: 'What are headlights for?',
+        correctTr: 'Yolu aydınlatmak ve görünür olmak için',
+        correctEn: 'To illuminate the road and be visible',
+        wrongTr: ['Motoru soğutmak için', 'Müzik çalmak için', 'Kapıları açmak için'],
+        wrongEn: ['To cool the engine', 'To play music', 'To open doors']
+      },
+      {
+        id: 'easy-turn-signals',
+        questionTr: 'Sinyal lambaları ne için kullanılır?',
+        questionEn: 'What are turn signals used for?',
+        correctTr: 'Dönüş veya şerit değiştirme niyetini bildirmek için',
+        correctEn: 'To indicate intention to turn or change lanes',
+        wrongTr: ['Hız göstermek için', 'Yakıt seviyesini göstermek için', 'Motoru çalıştırmak için'],
+        wrongEn: ['To show speed', 'To show fuel level', 'To start the engine']
+      },
+      {
+        id: 'easy-fuel-cap',
+        questionTr: 'Yakıt deposu kapağı ne için kullanılır?',
+        questionEn: 'What is the fuel cap for?',
+        correctTr: 'Yakıt deposunu kapatmak ve buharlaşmayı önlemek için',
+        correctEn: 'To close the fuel tank and prevent evaporation',
+        wrongTr: ['Yağ doldurmak için', 'Su eklemek için', 'Havayı kontrol etmek için'],
+        wrongEn: ['To add oil', 'To add water', 'To check air']
+      },
+      {
+        id: 'easy-trunk',
+        questionTr: 'Bagaj ne için kullanılır?',
+        questionEn: 'What is the trunk used for?',
+        correctTr: 'Eşya ve yük taşımak için',
+        correctEn: 'To carry luggage and cargo',
+        wrongTr: ['Yolcu taşımak için', 'Motor barındırmak için', 'Yakıt depolamak için'],
+        wrongEn: ['To carry passengers', 'To house the engine', 'To store fuel']
+      },
+      {
+        id: 'easy-windshield',
+        questionTr: 'Ön cam ne işe yarar?',
+        questionEn: 'What is the windshield for?',
+        correctTr: 'Sürücüyü rüzgar, yağmur ve döküntülerden korumak için',
+        correctEn: 'To protect the driver from wind, rain, and debris',
+        wrongTr: ['Motoru soğutmak için', 'Müzik dinlemek için', 'Yakıt tasarrufu için'],
+        wrongEn: ['To cool the engine', 'To listen to music', 'To save fuel']
+      },
+      {
+        id: 'easy-side-mirrors',
+        questionTr: 'Yan aynalar ne için kullanılır?',
+        questionEn: 'What are side mirrors used for?',
+        correctTr: 'Arkayı ve yanları görmek için',
+        correctEn: 'To see behind and to the sides',
+        wrongTr: ['Makyaj yapmak için', 'Far ayarı için', 'Motoru kontrol için'],
+        wrongEn: ['For makeup', 'For headlight adjustment', 'To check engine']
+      }
+    ]
+
+    // Ek easy soruları ekle
+    easyExtras.forEach((eq) => {
+      const correctAnswer = isTR ? eq.correctTr : eq.correctEn
+      const wrongAnswers = isTR ? eq.wrongTr : eq.wrongEn
+      const allAnswers = shuffleArray([correctAnswer, ...wrongAnswers])
+
+      questions.push({
+        id: eq.id,
+        question: isTR ? eq.questionTr : eq.questionEn,
+        answers: allAnswers,
+        correctIndex: allAnswers.indexOf(correctAnswer),
+        explanation: isTR ? `Doğru cevap: ${eq.correctTr}` : `Correct answer: ${eq.correctEn}`,
+        difficulty: 'easy'
+      })
+    })
+
+    // Ek Medium sorular (bakım ve kullanım bilgileri)
+    const mediumExtras = [
+      {
+        id: 'medium-oil-check',
+        questionTr: 'Motor yağı seviyesi nasıl kontrol edilir?',
+        questionEn: 'How is engine oil level checked?',
+        correctTr: 'Motor soğukken yağ çubuğu çıkarılıp silinir, tekrar daldırılıp seviyeye bakılır',
+        correctEn: 'With engine cold, remove dipstick, wipe clean, reinsert and check level',
+        wrongTr: ['Motor çalışırken kapağı açarak', 'Sadece göstergeye bakarak', 'Egzoz rengine bakarak'],
+        wrongEn: ['Opening cap while engine running', 'Only looking at gauge', 'Looking at exhaust color']
+      },
+      {
+        id: 'medium-tire-rotation',
+        questionTr: 'Lastik rotasyonu neden yapılır?',
+        questionEn: 'Why is tire rotation performed?',
+        correctTr: 'Lastiklerin eşit aşınmasını sağlamak ve ömürlerini uzatmak için',
+        correctEn: 'To ensure even tire wear and extend their lifespan',
+        wrongTr: ['Yakıt tasarrufu için', 'Fren gücünü artırmak için', 'Aracı hızlandırmak için'],
+        wrongEn: ['To save fuel', 'To increase braking power', 'To speed up the car']
+      },
+      {
+        id: 'medium-coolant-color',
+        questionTr: 'Antifriz rengi neyi gösterir?',
+        questionEn: 'What does coolant color indicate?',
+        correctTr: 'Farklı kimyasal formülasyonları gösterir, karıştırılmamalıdır',
+        correctEn: 'Different chemical formulations, should not be mixed',
+        wrongTr: ['Sadece estetik tercih', 'Sıcaklık seviyesi', 'Yakıt türü'],
+        wrongEn: ['Just aesthetic preference', 'Temperature level', 'Fuel type']
+      },
+      {
+        id: 'medium-brake-check',
+        questionTr: 'Fren sisteminin düzgün çalıştığını nasıl anlarsınız?',
+        questionEn: 'How do you know the brake system is working properly?',
+        correctTr: 'Pedal sert hissedilir, araç düz durur, ses veya titreşim yoktur',
+        correctEn: 'Pedal feels firm, car stops straight, no noise or vibration',
+        wrongTr: ['Pedal yere kadar gider', 'Fren yaparken araç kayar', 'Metalik ses duyulur'],
+        wrongEn: ['Pedal goes to floor', 'Car slides when braking', 'Metallic sound is heard']
+      },
+      {
+        id: 'medium-battery-jump',
+        questionTr: 'Takviye kablosu ile çalıştırmada doğru sıra nedir?',
+        questionEn: 'What is the correct order when jump starting?',
+        correctTr: 'Önce (+) kutuplar bağlanır, sonra (-) çalışan araçta şasiye bağlanır',
+        correctEn: 'First connect (+) terminals, then (-) to chassis of working car',
+        wrongTr: ['Önce (-) bağlanır', 'Sıra önemli değil', 'Sadece (+) yeterli'],
+        wrongEn: ['First connect (-)', 'Order does not matter', 'Only (+) is enough']
+      },
+      {
+        id: 'medium-warning-lights',
+        questionTr: 'Gösterge panelinde kırmızı uyarı lambası yanarsa ne yapılmalı?',
+        questionEn: 'What should be done if a red warning light comes on?',
+        correctTr: 'Güvenli bir yerde durup kullanım kılavuzunu kontrol etmeli veya servise gitmeli',
+        correctEn: 'Stop safely and check manual or go to service',
+        wrongTr: ['Görmezden gelinebilir', 'Hızı artırmalı', 'Sadece sarı lambalar önemli'],
+        wrongEn: ['Can be ignored', 'Should speed up', 'Only yellow lights matter']
+      }
+    ]
+
+    // Ek medium soruları ekle
+    mediumExtras.forEach((mq) => {
+      const correctAnswer = isTR ? mq.correctTr : mq.correctEn
+      const wrongAnswers = isTR ? mq.wrongTr : mq.wrongEn
+      const allAnswers = shuffleArray([correctAnswer, ...wrongAnswers])
+
+      questions.push({
+        id: mq.id,
+        question: isTR ? mq.questionTr : mq.questionEn,
+        answers: allAnswers,
+        correctIndex: allAnswers.indexOf(correctAnswer),
+        explanation: isTR ? `Doğru cevap: ${mq.correctTr}` : `Correct answer: ${mq.correctEn}`,
+        difficulty: 'medium'
+      })
     })
 
     return shuffleArray(questions)

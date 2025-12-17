@@ -3096,7 +3096,7 @@ function App() {
   const isTR = lang === 'tr'
 
   return (
-    <div className="homepage">
+    <div className="homepage" onClick={menuOpen ? () => setMenuOpen(false) : undefined}>
       <header className={`top-nav ${navSolid ? 'solid' : ''}`}>
         <div className="brand">
           <img src="/roadnix-logo.png" alt="roadnix logo" className="brand-logo" />
@@ -3135,7 +3135,7 @@ function App() {
         </button>
       </header>
 
-      <main>
+      <main onClick={(e) => e.stopPropagation()}>
         {isQuizMode ? (
           <section className="quiz-page" id="quiz-page">
             <div className="quiz-page-header">

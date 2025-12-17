@@ -3327,7 +3327,13 @@ function App() {
                         onClick={handleAnswerNext}
                         disabled={selectedIndex === null}
                       >
-                        {currentIndex === quizQuestions.length - 1 ? 'Finish quiz' : 'Next question'}
+                    {currentIndex === quizQuestions.length - 1
+                      ? isTR
+                        ? 'Testi bitir'
+                        : 'Finish quiz'
+                      : isTR
+                        ? 'Sonraki soru'
+                        : 'Next question'}
                       </button>
                     </div>
                   </>

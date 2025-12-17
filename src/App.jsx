@@ -2200,6 +2200,8 @@ function App() {
   }
 
   const handleNavItemClick = (link) => {
+    if (menuOpen) setMenuOpen(false)
+
     if (link.type === 'quiz') {
       handleStartQuizView(link.quizKey)
       return
@@ -3096,7 +3098,7 @@ function App() {
   const isTR = lang === 'tr'
 
   return (
-    <div className="homepage" onClick={menuOpen ? () => setMenuOpen(false) : undefined}>
+    <div className="homepage">
       <header className={`top-nav ${navSolid ? 'solid' : ''}`}>
         <div className="brand">
           <img src="/roadnix-logo.png" alt="roadnix logo" className="brand-logo" />
@@ -3135,7 +3137,7 @@ function App() {
         </button>
       </header>
 
-      <main onClick={(e) => e.stopPropagation()}>
+      <main onClick={menuOpen ? () => setMenuOpen(false) : undefined}>
         {isQuizMode ? (
           <section className="quiz-page" id="quiz-page">
             <div className="quiz-page-header">

@@ -2640,8 +2640,8 @@ footer p {
   }
   
   .sign-gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 0.9rem;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
   }
 }
 
@@ -2693,17 +2693,17 @@ footer p {
   }
   
   .sign-gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.95rem;
   }
   
   .sign-gallery-grid article img {
-    width: 90px;
-    height: 90px;
+    width: 140px;
+    height: 140px;
   }
   
   .sign-gallery-grid article p {
-    font-size: 0.8rem;
+    font-size: 0.95rem;
   }
   
   .pillars-grid {
@@ -2795,17 +2795,17 @@ footer p {
   }
   
   .sign-gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 0.7rem;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.9rem;
   }
   
   .sign-gallery-grid article img {
-    width: 80px;
-    height: 80px;
+    width: 110px;
+    height: 110px;
   }
   
   .sign-gallery-grid article p {
-    font-size: 0.78rem;
+    font-size: 0.9rem;
   }
   
   .guide-category-header h3 {
@@ -2948,8 +2948,8 @@ footer p {
   }
   
   .sign-gallery-grid article img {
-    width: 45px;
-    height: 45px;
+    width: 65px;
+    height: 65px;
   }
   
   .toggle-row {

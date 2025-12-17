@@ -1017,6 +1017,277 @@ const knowledgeQuestionTranslationsTr = {
     answers: ['Asansör var', 'İleride iki yönlü trafik', 'Çift yönlü bisiklet yolu', 'Dikey geçiş yüksekliği bilgisi'],
     explanation:
       'Zıt yönlere bakan oklar, tek yönlü yoldan iki yönlü trafiğin olduğu bir kesime girdiğinizi veya böyle bir bölgeye yaklaştığınızı gösterir.'
+  },
+
+  // ========== YENİ KOLAY SORULAR (4) ==========
+  'veh-39-fog-lights': {
+    question: 'Sis farları ne zaman kullanılmalıdır?',
+    answers: ['Geceleri iyi aydınlatılmış yollarda', 'Sadece sis veya görüş mesafesi 100m altındaki şiddetli yağmurda', 'Farlar açıkken her zaman', 'Gündüz görünürlük için'],
+    explanation: 'Sis farları düşük görüş koşulları için tasarlanmıştır. Gereksiz kullanım diğer sürücüleri kamaştırabilir.'
+  },
+  'veh-40-vehicle-inspection': {
+    question: 'Düzenli araç muayenesi neden önemlidir?',
+    answers: ['Yakıt verimliliğini artırmak için', 'Aracın güvenlik standartlarını karşıladığından emin olmak için', 'Araç hızını artırmak için', 'Sigorta maliyetlerini düşürmek için'],
+    explanation: 'Düzenli muayeneler fren, ışık, lastik ve diğer güvenlik sistemlerinin düzgün çalışmasını sağlar.'
+  },
+  'env-41-ped-crossing-stop': {
+    question: 'Yaya geçidinde bekleyen biri varsa sürücü ne yapmalıdır?',
+    answers: ['Yayayı uyarmak için korna çalmak', 'Durmalı ve geçmesine izin vermeli', 'Far yakıp yoluna devam etmeli', 'Hızlanarak geçmeli'],
+    explanation: 'Sürücüler yaya geçidinde bekleyen veya geçmekte olan yayalara yol vermek zorundadır.'
+  },
+  'veh-42-braking-distance': {
+    question: 'Fren mesafesini etkileyen faktörler nelerdir?',
+    answers: ['Sadece araç ağırlığı', 'Hız, yol koşulları, lastik durumu ve fren durumu', 'Sadece hava koşulları', 'Sadece sürücü tepki süresi'],
+    explanation: 'Fren mesafesi hız, yol yüzeyi, lastik tutuşu, fren durumu ve araç ağırlığına bağlıdır.'
+  },
+
+  // ========== YENİ ORTA SORULAR (20) ==========
+  'hum-43-night-driving': {
+    question: 'Gece sürüşünün ana tehlikesi nedir?',
+    answers: ['Artan yakıt tüketimi', 'Azalan görüş ve artan yorgunluk', 'Daha yoğun trafik', 'Daha fazla yol gürültüsü'],
+    explanation: 'Gece sürüşü görüşü kısıtlar ve uyuşukluğu artırır. Her zaman uygun aydınlatma kullanın ve uzun yolculuklarda mola verin.'
+  },
+  'veh-44-rain-driving': {
+    question: 'Şiddetli yağmurda sürüşünüzü nasıl ayarlamalısınız?',
+    answers: ['Yağmurdan çıkmak için hızlanın', 'Hızı azaltın, takip mesafesini artırın, kısa far kullanın', 'Uzun far kullanın', 'Normal sürün'],
+    explanation: 'Yağmur tutuşu ve görüşü azaltır. Yavaşlayın, daha fazla mesafe bırakın ve kısa far kullanın.'
+  },
+  'veh-45-emergency-braking': {
+    question: 'ABS olmayan bir araçta kaygan yolda ani fren yaparsanız ne olur?',
+    answers: ['Araç daha hızlı durur', 'Tekerlekler kilitlenebilir ve direksiyon kontrolünü kaybedersiniz', 'Araç otomatik dengelenir', 'Olağandışı bir şey olmaz'],
+    explanation: 'ABS olmadan sert frenleme tekerlekleri kilitleyebilir ve kaymaya neden olabilir. Kayan bir aracı etkili şekilde yönlendiremezsiniz.'
+  },
+  'env-46-junction-priority': {
+    question: 'İşaretsiz eşit yollarda kavşakta kimin önceliği vardır?',
+    answers: ['Büyük araç', 'Sağdan gelen trafik', 'Hızlı araç', 'İlk gelen'],
+    explanation: 'Çoğu ülkede, işaret olmadığında eşit kavşaklarda sağdan gelen trafiğin önceliği vardır.'
+  },
+  'env-47-roundabout-rules': {
+    question: 'Dönel kavşağa girerken ne yapmalısınız?',
+    answers: ['Hızlı birleşmek için hızlanın', 'Dönel kavşaktaki trafiğe yol verin', 'Girmeden önce tamamen durun', 'Giriş sinyali için far yakıp söndürün'],
+    explanation: 'Dönel kavşakta halihazırda dönen trafiğin önceliği vardır. Güvenli bir boşluk bulana kadar bekleyin.'
+  },
+  'veh-48-emergency-stop': {
+    question: 'Aracınız otoyolda bozulursa ilk ne yapmalısınız?',
+    answers: ['Araçta kalın ve yardım çağırın', 'Banket şeridine geçin, dörtlüleri yakın, güvenle çıkın ve bariyerlerin arkasında durun', 'Aracı hemen tamir etmeye çalışın', 'Diğer sürücülere el sallayın'],
+    explanation: 'Güvenle kenara çekin, dörtlüleri açın, reflektör üçgen koyun ve mümkünse bariyerin arkasına geçin.'
+  },
+  'veh-49-tire-blowout': {
+    question: 'Sürüş sırasında lastik patlarsa ne yapmalısınız?',
+    answers: ['Hemen sert fren yapın', 'Direksiyonu sıkı tutun, gazdan yavaşça çekin ve kademeli olarak yavaşlayın', 'Yolun kenarına keskin dönüş yapın', 'Kontrolü korumak için hızlanın'],
+    explanation: 'Direksiyonu sıkı tutun, ani fren yapmayın. Aracın doğal olarak yavaşlamasına izin verin, düz tutun, sonra güvenle kenara çekin.'
+  },
+  'veh-50-overheating': {
+    question: 'Motor sıcaklık göstergesi aşırı ısınma gösteriyorsa ne yapmalısınız?',
+    answers: ['Hemen motora soğuk su dökün', 'Güvenle durun, klimayı kapatın, kontrol etmeden önce motorun soğumasını bekleyin', 'Araç hala çalışıyorsa görmezden gelin', 'Soğutmak için motoru çalıştırın'],
+    explanation: 'Güvenle durun, klimayı kapatın ve motorun soğumasını bekleyin. Motor sıcakken asla radyatör kapağını açmayın.'
+  },
+  'veh-51-brake-fluid': {
+    question: 'Fren hidroliği ne sıklıkla kontrol edilmeli ve değiştirilmelidir?',
+    answers: ['Her 10 yılda bir', 'Aylık kontrol, 2-3 yılda bir veya önerildiği şekilde değiştirme', 'Sadece frenler yumuşak hissedildiğinde', 'Asla değiştirilmesi gerekmez'],
+    explanation: 'Fren hidroliği zamanla nem emer ve etkinliğini azaltır. Düzenli kontrol edin ve üretici kılavuzuna göre değiştirin.'
+  },
+  'veh-52-light-check': {
+    question: 'Araç lambalarınızın çalıştığını ne sıklıkla kontrol etmelisiniz?',
+    answers: ['Yılda bir', 'Haftalık veya uzun yolculuklardan önce', 'Sadece muayene zamanı', 'Aylık'],
+    explanation: 'Tüm lambaları haftalık veya uzun yolculuklardan önce kontrol edin. Çalışan lambalar güvenlik ve yasal uyum için gereklidir.'
+  },
+  'hum-53-break-frequency': {
+    question: 'Uzun bir yolculukta ne sıklıkla mola vermelisiniz?',
+    answers: ['Her 4-5 saatte', 'Her 2 saatte veya 100 mil/160 km\'de', 'Sadece yorgun hissettiğinizde', 'Her 30 dakikada'],
+    explanation: 'En az her 2 saatte veya 160 km\'de 15 dakikalık mola verin. Yorgunluk fark etmeden önce tepkileri etkiler.'
+  },
+  'hum-54-alcohol-duration': {
+    question: 'Alkolün vücuttan atılması ne kadar sürer?',
+    answers: ['Ortalama birim başına 1 saat', 'Kahve içmek hızlandırır', 'İçki başına 30 dakika', 'Sadece vücut ağırlığına bağlı'],
+    explanation: 'Vücut saatte yaklaşık 1 birim alkol işler. Kahve, yiyecek veya su bu süreci hızlandırmaz.'
+  },
+  'veh-55-cabin-air': {
+    question: 'Sürüş sırasında uygun havalandırma neden önemlidir?',
+    answers: ['Yakıt tasarrufu için', 'Uyuşukluğu önlemek ve uyanıklığı korumak için', 'Motoru soğutmak için', 'Gürültüyü azaltmak için'],
+    explanation: 'Temiz hava uyuşukluğu önlemeye yardımcı olur. Havasız kabin, özellikle uzun yolculuklarda uyku getirebilir.'
+  },
+  'veh-56-parking-sensors': {
+    question: 'Park sensörleri sürücülere nasıl yardımcı olur?',
+    answers: ['Aracı otomatik park ederler', 'Engelleri algılar ve sesli sinyallerle uyarır', 'Park halindeyken aracı kilitlerler', 'Yakıt verimliliğini artırırlar'],
+    explanation: 'Park sensörleri engelleri algılamak için ultrasonik dalgalar kullanır ve yaklaştıkça artan bip sesleriyle sürücüyü uyarır.'
+  },
+  'veh-57-reversing-camera': {
+    question: 'Geri görüş kamerası kullanırken ne yapmalısınız?',
+    answers: ['Sadece kameraya güvenin', 'Yardımcı olarak kullanın ama aynaları da kontrol edin ve etrafınıza bakın', 'Görmezden gelin ve sadece aynaları kullanın', 'Sadece geceleri kullanın'],
+    explanation: 'Kameraların kör noktaları vardır. Her zaman kamera görüntüsünü ayna kontrolleri ve fiziksel olarak etrafınıza bakmakla birleştirin.'
+  },
+  'veh-58-cruise-control': {
+    question: 'Hız sabitlemeyi ne zaman KULLANMAMALISINIZ?',
+    answers: ['Uzun düz otoyollarda', 'Yağmur, kar, yoğun trafik veya virajlı yollarda', 'Gündüz sürüşünde', 'Yalnız sürüş yaparken'],
+    explanation: 'Hız sabitleyici sık hız ayarlaması gerektiren koşullarda güvensizdir. Sadece açık, kuru, tıkanık olmayan yollarda kullanın.'
+  },
+  'veh-59-automatic-gears': {
+    question: 'Otomatik vitesli araçta "P" ne anlama gelir?',
+    answers: ['Güç', 'Park - şanzımanı kilitler', 'Duraklama', 'Performans modu'],
+    explanation: 'P (Park) aracın yuvarlanmasını önlemek için şanzımanı kilitler. Araçtan çıkmadan önce her zaman P\'ye alın.'
+  },
+  'veh-60-steering-lock': {
+    question: 'Direksiyon kilidinin amacı nedir?',
+    answers: ['Park yapmayı kolaylaştırmak', 'Direksiyonu kilitleyerek hırsızlığı önlemek', 'Direksiyon tepkisini iyileştirmek', 'Direksiyonu hasardan korumak'],
+    explanation: 'Direksiyon kilidi kontak kapatılıp anahtar çıkarıldığında devreye girer ve aracın çalınmasını zorlaştırır.'
+  },
+  'veh-61-immobilizer': {
+    question: 'Motor immobilizer ne işe yarar?',
+    answers: ['Kırmızı ışıklarda motoru durdurur', 'Doğru anahtar/kumanda olmadan motorun çalışmasını engeller', 'Motor hızını sınırlar', 'Yakıt verimliliğini artırır'],
+    explanation: 'İmmobilizer, motorun yalnızca doğru transponder anahtarı kullanıldığında çalışmasına izin veren bir hırsızlık önleme cihazıdır.'
+  },
+  'hum-62-insurance-mandatory': {
+    question: 'Üçüncü şahıs araç sigortası neden çoğu ülkede zorunludur?',
+    answers: ['Kendi aracınızı korumak için', 'Başkalarına ve mallarına verdiğiniz hasarı karşılamak için', 'Daha ucuz onarım için', 'Yakıt maliyetlerini düşürmek için'],
+    explanation: 'Üçüncü şahıs sigortası, neden olduğunuz kazaların kurbanlarının yaralanma ve mal hasarı için tazminat almasını sağlar.'
+  },
+
+  // ========== YENİ ZOR SORULAR (28) ==========
+  'hum-63-accident-procedure': {
+    question: 'Kaza yerinde doğru eylem sırası nedir?',
+    answers: [
+      'Polisi ara, araçları taşı, bilgi al',
+      'Güvenliği sağla, acil servisleri ara, eğitimliysen ilk yardım yap, bilgi topla',
+      'Önce fotoğraf çek, sonra sigortayı ara',
+      'Dahil olmamak için hemen ayrıl'
+    ],
+    explanation: 'Önce güvenlik: alanı emniyete alın, 112\'yi arayın, güvenliyse ve eğitimliyseniz yaralılara yardım edin, sonra bilgi alışverişi yapın ve belgeleyin.'
+  },
+  'hum-64-first-aid-basics': {
+    question: 'Bir kişi kazadan sonra bilinçsiz ama nefes alıyorsa ne yapmalısınız?',
+    answers: ['Hemen hareket ettirin', 'Kurtarma pozisyonuna alın ve nefesini izleyin', 'Su verin', 'Uyandırmak için şiddetle sarsın'],
+    explanation: 'Kurtarma pozisyonu solunum yolunu açık tutar. Tehlike yoksa hareket ettirmeyin; profesyonelleri bekleyin.'
+  },
+  'hum-65-legal-responsibility': {
+    question: 'Yaralanmalı bir trafik kazasından sonra durmamak ve bildirmemek ne ile sonuçlanabilir?',
+    answers: ['Sadece küçük bir para cezası', 'Cezai suçlamalar, ehliyet askıya alma ve hapis cezası', 'Suçlu değilseniz sonuç yok', 'Sigorta konuyu halleder'],
+    explanation: 'Vur-kaç ciddi bir suçtur. Suçlu olmasanız bile durmalı, yardım sağlamalı ve polise bildirmelisiniz.'
+  },
+  'hum-66-drunk-driving-penalty': {
+    question: 'Çoğu Avrupa ülkesinde alkollü araç kullanma cezaları tipik olarak neleri içerir?',
+    answers: ['Sadece uyarı mektubu', 'Para cezası, ehliyet askıya alma, olası hapis cezası ve sabıka kaydı', 'Sadece zorunlu sürüş kursu', 'Sadece sigorta primi artışı'],
+    explanation: 'Alkollü araç kullanma ağır para cezası, ehliyet iptali, hapis cezası ve kalıcı sabıka kaydı gibi ciddi yaptırımlar taşır.'
+  },
+  'hum-67-speeding-consequences': {
+    question: 'Çarpışmada hız ile çarpma kuvveti arasındaki ilişki nedir?',
+    answers: ['Çarpma kuvveti hızla doğrusal artar', 'Çarpma kuvveti hızın karesiyle artar (hızı ikiye katlamak = 4 kat kuvvet)', 'Hız çarpma kuvvetini etkilemez', 'Çarpma kuvveti sadece araç ağırlığına bağlıdır'],
+    explanation: 'Kinetik enerji = ½mv². Hızınızı ikiye katlamak çarpma kuvvetini dört katına çıkarır, bu da yüksek hızdaki kazaları katlanarak daha ölümcül yapar.'
+  },
+  'env-68-red-light-consequences': {
+    question: 'Kırmızı ışık ihlali ne ile sonuçlanabilir?',
+    answers: ['Kamera yoksa ceza yok', 'Ehliyete puan, para cezası ve tekrarlayan ihlallerde olası sürüş yasağı', 'Sadece uyarı', 'Sadece idari para cezası'],
+    explanation: 'Kırmızı ışık ihlalleri puan ve para cezası taşır, tekrarlayan ihlaller sürüş yasaklarına yol açabilir. Kameralar otomatik olarak ihlalleri kaydeder.'
+  },
+  'hum-69-seatbelt-penalty': {
+    question: 'Emniyet kemeri takmamanın sonuçları nelerdir?',
+    answers: ['Yetişkinler için ceza yok', 'Para cezası, ceza puanı ve sürücü 14 yaş altı yolculardan sorumlu', 'İlk ihlalde sadece uyarı', 'Sigorta sonuçta oluşan yaralanmaları karşılar'],
+    explanation: 'Emniyet kemeri takmamak para cezasıyla sonuçlanır. Sürücüler 14 yaş altı tüm yolcuların kemer takmasını sağlamaktan sorumludur.'
+  },
+  'hum-70-phone-penalty': {
+    question: 'Sürüş sırasında elde telefon kullanmak tipik olarak ne ile sonuçlanır?',
+    answers: ['Sadece küçük para cezası', 'Önemli para cezası, ceza puanı ve yeni sürücüler için olası ehliyet askıya alma', 'Sadece uyarı', 'Trafik ışıklarında durulduğunda ceza yok'],
+    explanation: 'Sürüş sırasında telefon kullanımı ağır para cezası ve puan taşır. Yeni sürücüler anında ehliyet askıya alma ile karşı karşıya kalabilir.'
+  },
+  'hum-71-accident-statistics': {
+    question: 'DSÖ istatistiklerine göre dünya genelinde yılda yaklaşık kaç kişi trafik kazalarında ölüyor?',
+    answers: ['100.000', '500.000', '1,35 milyon', '5 milyon'],
+    explanation: 'Trafik kazaları yılda yaklaşık 1,35 milyon kişiyi öldürür ve 5-29 yaş arası için önde gelen ölüm nedenidir.'
+  },
+  'hum-72-young-driver-risk': {
+    question: 'Genç sürücüler (17-25) neden daha yüksek kaza riskine sahip?',
+    answers: ['Daha eski arabalar kullanıyorlar', 'Daha az deneyim, aşırı özgüven ve daha yüksek risk alma davranışı', 'Daha fazla kilometre yapıyorlar', 'Daha kötü görüşleri var'],
+    explanation: 'Genç sürücüler tehlike algılamada deneyimsizdir ve hız yapma, gece sürüş ve risk alma olasılıkları daha yüksektir.'
+  },
+  'hum-73-elderly-challenges': {
+    question: 'Yaşlı sürücüler hangi sürüş zorluklarıyla karşılaşabilir?',
+    answers: ['Sadece yavaş tepki süreleri', 'Azalan görüş, yavaş tepkiler, kör nokta kontrolü için azalan esneklik, ilaç etkileri', 'Önemli bir zorluk yok', 'Sadece işitme kaybı'],
+    explanation: 'Yaş görüşü, tepkileri, esnekliği ve bilişsel işlevi etkileyebilir. Bazı ilaçlar da sürüş yeteneğini bozar.'
+  },
+  'hum-74-night-accident-rate': {
+    question: 'Daha az trafiğe rağmen ölümlü kazaların yüzde kaçı gece saatlerinde meydana geliyor?',
+    answers: ['Yaklaşık %10', 'Yaklaşık %25', 'Yaklaşık %40-50', 'Yaklaşık %80'],
+    explanation: 'Daha az trafiğe rağmen, azalan görüş, yorgunluk ve alkol etkisi nedeniyle ölümlü kazaların %40-50\'si geceleri meydana gelir.'
+  },
+  'hum-75-weather-accidents': {
+    question: 'Islak yollarda kuru yollara kıyasla kaza olasılığı ne kadar daha fazla?',
+    answers: ['%10 daha olası', '2-3 kat daha olası', '10 kat daha olası', 'Önemli bir fark yok'],
+    explanation: 'Islak yollar azalan lastik tutuşu, daha uzun durma mesafeleri ve azalan görüş nedeniyle kaza riskini iki veya üç katına çıkarır.'
+  },
+  'env-76-rural-vs-urban': {
+    question: 'Kırsal yol kazaları neden genellikle şehir kazalarından daha şiddetli?',
+    answers: ['Kırsal alanlarda daha fazla trafik', 'Daha yüksek hızlar, daha dar yollar, daha az aydınlatma ve daha uzun acil müdahale süreleri', 'Daha fazla yaya', 'Daha kötü yol yüzeyleri'],
+    explanation: 'Kırsal yollar daha yüksek hız limitleri, aydınlatma yok, daha keskin virajlar ve acil servisler daha geç ulaşır.'
+  },
+  'veh-77-vehicle-safety-rating': {
+    question: '5 yıldızlı Euro NCAP derecelendirmesi neyi gösterir?',
+    answers: ['Yakıt verimliliği seviyesi', 'En yüksek çarpışma koruması ve güvenlik özellikleri seviyesi', 'Emisyon standartları', 'Güvenilirlik derecelendirmesi'],
+    explanation: 'Euro NCAP yetişkinler, çocuklar, yayalar için çarpışma korumasını ve güvenlik destek özelliklerini test eder. 5 yıldız = mükemmel koruma.'
+  },
+  'veh-78-aeb-system': {
+    question: 'Otonom Acil Fren (AEB) sistemi nasıl çalışır?',
+    answers: ['Sürücüyü tamamen değiştirir', 'Sensörler yaklaşan çarpışmayı algılar ve sürücü tepki vermezse fren yapar', 'Sadece park halindeyken çalışır', 'Fren gücünü artırır'],
+    explanation: 'AEB engelleri algılamak için kameralar/radar kullanır. Çarpışma kaçınılmazsa ve sürücü fren yapmazsa sistem otomatik fren yapar.'
+  },
+  'veh-79-lane-assist': {
+    question: 'Şeritten Ayrılma Uyarı sistemi ne yapar?',
+    answers: ['Otomatik olarak şerit değiştirir', 'Sinyal vermeden kasıtsız olarak şeritten ayrılırken sürücüyü uyarır', 'Tüm şerit değişikliklerini engeller', 'Sadece otoyollarda çalışır'],
+    explanation: 'Şerit ayrılma sistemleri şerit işaretlerini algılamak için kameralar kullanır ve sinyal vermeden kayma olduğunda (titreşim/ses) uyarır.'
+  },
+  'veh-80-adaptive-cruise': {
+    question: 'Adaptif Hız Sabitleyici standart hız sabitleyiciden nasıl farklıdır?',
+    answers: ['Daha az yakıt kullanır', 'Öndeki araçla güvenli mesafeyi korumak için otomatik olarak hızı ayarlar', 'Sadece şehirlerde çalışır', 'Fark yoktur'],
+    explanation: 'ACC öndeki araçları algılamak için radar/kamera kullanır ve belirli bir takip mesafesini korumak için otomatik olarak yavaşlar veya hızlanır.'
+  },
+  'veh-81-blind-spot-monitor': {
+    question: 'Kör Nokta İzleme sistemi sürücüyü nasıl uyarır?',
+    answers: ['Sadece sesli alarm', 'Yan aynalarda görsel uyarı, şerit değiştirmek için sinyal verirseniz sesli uyarı ile', 'Otomatik direksiyon düzeltmesi', 'Sadece gösterge paneli mesajı'],
+    explanation: 'KNİ kör noktalardaki araçları algılamak için radar kullanır ve aynada uyarı ışığı gösterir, şerit değiştirmek için sinyal verirseniz yoğunlaşır.'
+  },
+  'veh-82-auto-parking': {
+    question: 'Otomatik park sistemi sürücüden ne bekler?',
+    answers: ['Hiçbir şey - tamamen otonom', 'Sistem direksiyon kullanırken sürücü gaz ve freni kontrol eder veya tamamen otomatik parkı denetler', 'Sürücü hala direksiyon kullanmalı', 'Sadece işaretli alanlarda çalışır'],
+    explanation: 'Çoğu sistem ya siz pedalları kontrol ederken direksiyon kullanır ya da sürücü denetim ve müdahale edebilirken otonom park eder.'
+  },
+  'veh-83-rear-collision-prevention': {
+    question: 'Arka Çapraz Trafik Uyarısı (RCTA) en çok ne zaman faydalıdır?',
+    answers: ['İleri sürüşte', 'Görüşün sınırlı olduğu park yerlerinden geri çıkarken', 'Trafik ışıklarında', 'Otoyollarda'],
+    explanation: 'RCTA geri giderken yanlardan yaklaşan araçları uyarır, görüşün engellendiği otoparklarda faydalıdır.'
+  },
+  'veh-84-drowsiness-detection': {
+    question: 'Yorgunluk algılama sistemleri nasıl çalışır?',
+    answers: ['Kan alkolünü ölçerler', 'Yorgunluk belirtileri için direksiyon hareketlerini, göz hareketini veya yüz özelliklerini izlerler', 'Sadece kalp atışını kontrol ederler', 'Ses kalıplarını analiz ederler'],
+    explanation: 'Bu sistemler yorgunluk belirtilerini tespit etmek için direksiyon davranışını, göz kapanmasını, baş pozisyonunu veya şerit takibini analiz eder ve mola önerir.'
+  },
+  'veh-85-tsr-system': {
+    question: 'Trafik İşareti Tanıma (TSR) sistemi ne yapar?',
+    answers: ['Tüm işaretlere otomatik olarak uyar', 'Yol işaretlerini okumak için kameralar kullanır ve sürücüye gösterir', 'Trafik ışıklarını kontrol eder', 'Varış noktalarına navigasyon yapar'],
+    explanation: 'TSR kameraları hız sınırlarını ve diğer işaretleri okur, mevcut kısıtlamalardan haberdar olmaları için gösterge panelinde görüntüler.'
+  },
+  'veh-86-night-vision': {
+    question: 'Otomotiv gece görüş sistemleri sürücülere nasıl yardımcı olur?',
+    answers: ['Farları parlatırlar', 'Far menzilinin ötesinde yayaları ve hayvanları algılamak için kızılötesi kameralar kullanırlar', 'Sadece siste çalışırlar', 'Farların yerini alırlar'],
+    explanation: 'Gece görüşü, far menzilinin çok ötesinde insanlar veya hayvanlar gibi sıcak nesneleri tespit etmek için termal veya kızılötesi görüntüleme kullanır.'
+  },
+  'veh-87-360-camera': {
+    question: '360 derece çevre görüntüleme kamera sistemi nedir?',
+    answers: ['Tek bir arka kamera', 'Aracın etrafında kuşbakışı görünüm gösteren birden fazla kameranın birleşimi', 'Araç içi kamera', 'Kayıt için araç kamerası'],
+    explanation: '360 derece sistemler aracın ve çevresinin tepeden görünümünü oluşturmak için 4+ kamerayı birleştirir, dar park için yardımcı olur.'
+  },
+  'veh-88-hud-display': {
+    question: 'Ön Cam Göstergesi (HUD) sisteminin faydası nedir?',
+    answers: ['Eğlence amaçlı', 'Hız ve navigasyonu ön cama yansıtarak sürücünün gözlerini yolda tutmasını sağlar', 'Geri kamera görüntüsü gösterir', 'Reklamlar gösterir'],
+    explanation: 'HUD temel bilgileri ön cama yansıtarak sürücülerin göstergeleri kontrol etmek için yoldan bakma süresini azaltır.'
+  },
+  'veh-89-keyless-security': {
+    question: 'Anahtarsız giriş araçlarına "röle saldırısı" nedir?',
+    answers: ['Araba radyosunu hacklemek', 'Hırsızlar gerçek anahtar olmadan aracı açmak ve çalıştırmak için anahtar sinyalini güçlendirir', 'Cam kırmak', 'Aracı çekmek'],
+    explanation: 'Suçlular anahtarınızın sinyalini evinizden aracınıza uzatmak için röle cihazları kullanır. Anahtarları sinyal engelleyen kılıflarda saklayın.'
+  },
+  'veh-90-ev-safety': {
+    question: 'Kazalarda elektrikli araçlara özgü hangi güvenlik hususu geçerlidir?',
+    answers: ['Kolayca patlarlar', 'Yüksek voltajlı bataryalar eğitimli acil müdahale ekipleri tarafından özel işlem gerektirir', 'Daha yanıcıdırlar', 'Özel husus yok'],
+    explanation: 'EV bataryaları elektrik çarpması riski oluşturabilir. Acil müdahale ekipleri EV\'ye özgü eğitime ihtiyaç duyar. Turuncu kablolar yüksek voltajı gösterir.'
   }
 }
 

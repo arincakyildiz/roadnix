@@ -562,6 +562,433 @@ export const knowledgeQuestions = [
     correctIndex: 1,
     explanation:
       'The opposing arrows warn that you are entering or are on a section of road with traffic in both directions.'
+  },
+
+  // ========== NEW EASY QUESTIONS (4) ==========
+  {
+    id: 'veh-39-fog-lights',
+    difficulty: 'easy',
+    question: 'When should fog lights be used?',
+    answers: ['At night on well-lit roads', 'Only in fog or heavy rain with visibility below 100m', 'Whenever headlights are on', 'During daytime for visibility'],
+    correctIndex: 1,
+    explanation: 'Fog lights are designed for poor visibility conditions like fog or heavy rain. Using them unnecessarily can dazzle other drivers.'
+  },
+  {
+    id: 'veh-40-vehicle-inspection',
+    difficulty: 'easy',
+    question: 'Why is regular vehicle inspection (MOT/roadworthiness test) important?',
+    answers: ['To increase fuel efficiency', 'To ensure the vehicle meets safety standards', 'To improve vehicle speed', 'To reduce insurance costs'],
+    correctIndex: 1,
+    explanation: 'Regular inspections ensure brakes, lights, tires and other safety systems work properly, keeping you and others safe.'
+  },
+  {
+    id: 'env-41-ped-crossing-stop',
+    difficulty: 'easy',
+    question: 'What must a driver do when a pedestrian is waiting at a zebra crossing?',
+    answers: ['Honk to warn the pedestrian', 'Stop and let them cross', 'Flash headlights and continue', 'Speed up to pass quickly'],
+    correctIndex: 1,
+    explanation: 'Drivers must stop for pedestrians waiting at or crossing a zebra crossing. Pedestrians have priority.'
+  },
+  {
+    id: 'veh-42-braking-distance',
+    difficulty: 'easy',
+    question: 'What factors affect braking distance?',
+    answers: ['Only vehicle weight', 'Speed, road conditions, tire condition, and brake condition', 'Only weather conditions', 'Only driver reaction time'],
+    correctIndex: 1,
+    explanation: 'Braking distance depends on speed, road surface, tire grip, brake condition, and vehicle weight. Higher speed dramatically increases it.'
+  },
+
+  // ========== NEW MEDIUM QUESTIONS (20) ==========
+  {
+    id: 'hum-43-night-driving',
+    difficulty: 'medium',
+    question: 'What is the main danger of driving at night?',
+    answers: ['Increased fuel consumption', 'Reduced visibility and increased fatigue', 'Higher traffic density', 'Louder road noise'],
+    correctIndex: 1,
+    explanation: 'Night driving limits your vision and increases drowsiness. Always use proper lighting and take breaks on long trips.'
+  },
+  {
+    id: 'veh-44-rain-driving',
+    difficulty: 'medium',
+    question: 'How should you adjust your driving in heavy rain?',
+    answers: ['Drive faster to get out of the rain', 'Reduce speed, increase following distance, use dipped headlights', 'Use full beam headlights', 'Drive as normal'],
+    correctIndex: 1,
+    explanation: 'Rain reduces grip and visibility. Slow down, keep more distance, and use dipped headlights so others can see you.'
+  },
+  {
+    id: 'veh-45-emergency-braking',
+    difficulty: 'medium',
+    question: 'What happens if you brake suddenly without ABS on a slippery road?',
+    answers: ['The car stops faster', 'Wheels may lock and you lose steering control', 'The car automatically stabilizes', 'Nothing unusual happens'],
+    correctIndex: 1,
+    explanation: 'Without ABS, hard braking can lock the wheels, causing a skid. You cannot steer a skidding vehicle effectively.'
+  },
+  {
+    id: 'env-46-junction-priority',
+    difficulty: 'medium',
+    question: 'At an unmarked junction with equal roads, who has priority?',
+    answers: ['The larger vehicle', 'Traffic coming from the right (in right-hand traffic countries)', 'The faster vehicle', 'Whoever arrives first'],
+    correctIndex: 1,
+    explanation: 'In most countries, when no signs exist, traffic from the right has priority at equal intersections.'
+  },
+  {
+    id: 'env-47-roundabout-rules',
+    difficulty: 'medium',
+    question: 'When entering a roundabout, you should:',
+    answers: ['Speed up to merge quickly', 'Give way to traffic already on the roundabout', 'Stop completely before entering', 'Flash your headlights to signal entry'],
+    correctIndex: 1,
+    explanation: 'Traffic already circulating on the roundabout has priority. Wait for a safe gap before entering.'
+  },
+  {
+    id: 'veh-48-emergency-stop',
+    difficulty: 'medium',
+    question: 'If your vehicle breaks down on a highway, what should you do first?',
+    answers: ['Stay in the vehicle and call for help', 'Move to the hard shoulder, turn on hazards, exit safely and stand behind barriers', 'Try to fix the vehicle immediately', 'Wave at other drivers for help'],
+    correctIndex: 1,
+    explanation: 'Pull over safely, activate hazard lights, place warning triangle, and move away from traffic behind a barrier if possible.'
+  },
+  {
+    id: 'veh-49-tire-blowout',
+    difficulty: 'medium',
+    question: 'What should you do if a tire blows out while driving?',
+    answers: ['Brake hard immediately', 'Hold the steering firmly, ease off the accelerator, and gradually slow down', 'Turn sharply to the side of the road', 'Accelerate to maintain control'],
+    correctIndex: 1,
+    explanation: 'Keep a firm grip on the steering wheel, do not brake suddenly. Let the car slow naturally while steering straight, then pull over safely.'
+  },
+  {
+    id: 'veh-50-overheating',
+    difficulty: 'medium',
+    question: 'If your engine temperature gauge shows overheating, you should:',
+    answers: ['Pour cold water on the engine immediately', 'Stop safely, turn off AC, let engine cool before checking coolant', 'Ignore it if the car still runs', 'Rev the engine to cool it down'],
+    correctIndex: 1,
+    explanation: 'Stop the car safely, turn off the AC, and wait for the engine to cool. Never open the radiator cap when hot.'
+  },
+  {
+    id: 'veh-51-brake-fluid',
+    difficulty: 'medium',
+    question: 'How often should brake fluid be checked and replaced?',
+    answers: ['Every 10 years', 'Check monthly, replace every 2-3 years or as recommended', 'Only when brakes feel soft', 'Never needs replacement'],
+    correctIndex: 1,
+    explanation: 'Brake fluid absorbs moisture over time, reducing effectiveness. Check regularly and replace per manufacturer guidelines.'
+  },
+  {
+    id: 'veh-52-light-check',
+    difficulty: 'medium',
+    question: 'How often should you check your vehicle lights are working?',
+    answers: ['Once a year', 'Weekly or before long journeys', 'Only at MOT time', 'Monthly'],
+    correctIndex: 1,
+    explanation: 'Check all lights weekly or before any long trip. Working lights are essential for safety and legal compliance.'
+  },
+  {
+    id: 'hum-53-break-frequency',
+    difficulty: 'medium',
+    question: 'On a long journey, how often should you take a break?',
+    answers: ['Every 4-5 hours', 'Every 2 hours or 100 miles', 'Only when you feel tired', 'Every 30 minutes'],
+    correctIndex: 1,
+    explanation: 'Take a 15-minute break at least every 2 hours or 100 miles. Fatigue builds gradually and affects reactions before you notice.'
+  },
+  {
+    id: 'hum-54-alcohol-duration',
+    difficulty: 'medium',
+    question: 'How long does it take for alcohol to leave your system?',
+    answers: ['1 hour per unit on average', 'Drinking coffee speeds it up', '30 minutes per drink', 'It depends on body weight only'],
+    correctIndex: 0,
+    explanation: 'The body processes about 1 unit of alcohol per hour. Coffee, food, or water do not speed up this process.'
+  },
+  {
+    id: 'veh-55-cabin-air',
+    difficulty: 'medium',
+    question: 'Why is proper ventilation important when driving?',
+    answers: ['To save fuel', 'To prevent drowsiness and maintain alertness', 'To keep the engine cool', 'To reduce noise'],
+    correctIndex: 1,
+    explanation: 'Fresh air helps prevent drowsiness. A stuffy cabin can make you sleepy, especially on long trips.'
+  },
+  {
+    id: 'veh-56-parking-sensors',
+    difficulty: 'medium',
+    question: 'How do parking sensors help drivers?',
+    answers: ['They automatically park the car', 'They detect obstacles and warn with audible signals', 'They lock the car when parked', 'They improve fuel efficiency'],
+    correctIndex: 1,
+    explanation: 'Parking sensors use ultrasonic waves to detect obstacles and alert the driver with beeps that increase as you get closer.'
+  },
+  {
+    id: 'veh-57-reversing-camera',
+    difficulty: 'medium',
+    question: 'When using a reversing camera, you should:',
+    answers: ['Rely only on the camera', 'Use it as an aid but also check mirrors and look around', 'Ignore it and use mirrors only', 'Use it only at night'],
+    correctIndex: 1,
+    explanation: 'Cameras have blind spots. Always combine camera view with mirror checks and physically looking around.'
+  },
+  {
+    id: 'veh-58-cruise-control',
+    difficulty: 'medium',
+    question: 'When should you NOT use cruise control?',
+    answers: ['On long straight highways', 'In rain, snow, heavy traffic, or winding roads', 'During daytime driving', 'When driving alone'],
+    correctIndex: 1,
+    explanation: 'Cruise control is unsafe in conditions requiring frequent speed adjustments. Use it only on clear, dry, uncongested roads.'
+  },
+  {
+    id: 'veh-59-automatic-gears',
+    difficulty: 'medium',
+    question: 'In an automatic vehicle, what does "P" stand for?',
+    answers: ['Power', 'Park - locks the transmission', 'Pause', 'Performance mode'],
+    correctIndex: 1,
+    explanation: 'P (Park) locks the transmission to prevent the car from rolling. Always engage P before leaving the vehicle.'
+  },
+  {
+    id: 'veh-60-steering-lock',
+    difficulty: 'medium',
+    question: 'What is the purpose of a steering lock?',
+    answers: ['To make parking easier', 'To prevent theft by locking the steering wheel', 'To improve steering response', 'To protect the steering wheel from damage'],
+    correctIndex: 1,
+    explanation: 'The steering lock engages when the ignition is off and the key removed, making it harder to steal the vehicle.'
+  },
+  {
+    id: 'veh-61-immobilizer',
+    difficulty: 'medium',
+    question: 'What does an engine immobilizer do?',
+    answers: ['Stops the engine at red lights', 'Prevents the engine from starting without the correct key/fob', 'Limits engine speed', 'Improves fuel efficiency'],
+    correctIndex: 1,
+    explanation: 'An immobilizer is an anti-theft device that only allows the engine to start when the correct transponder key is used.'
+  },
+  {
+    id: 'hum-62-insurance-mandatory',
+    difficulty: 'medium',
+    question: 'Why is third-party vehicle insurance mandatory in most countries?',
+    answers: ['To protect your own vehicle', 'To cover damage you cause to others and their property', 'To get cheaper repairs', 'To reduce fuel costs'],
+    correctIndex: 1,
+    explanation: 'Third-party insurance ensures victims of accidents you cause can receive compensation for injuries and property damage.'
+  },
+
+  // ========== NEW HARD QUESTIONS (28) ==========
+  {
+    id: 'hum-63-accident-procedure',
+    difficulty: 'hard',
+    question: 'What is the correct sequence of actions at an accident scene?',
+    answers: [
+      'Call police, move vehicles, exchange details',
+      'Ensure safety, call emergency services, provide first aid if trained, gather information',
+      'Take photos first, then call insurance',
+      'Leave immediately to avoid involvement'
+    ],
+    correctIndex: 1,
+    explanation: 'Safety first: secure the scene, call 112/999, help injured if safe and trained, then exchange details and document.'
+  },
+  {
+    id: 'hum-64-first-aid-basics',
+    difficulty: 'hard',
+    question: 'If a person is unconscious but breathing after an accident, you should:',
+    answers: ['Move them immediately', 'Place them in the recovery position and monitor breathing', 'Give them water', 'Shake them vigorously to wake them'],
+    correctIndex: 1,
+    explanation: 'The recovery position keeps the airway clear. Do not move them unless in immediate danger; wait for professionals.'
+  },
+  {
+    id: 'hum-65-legal-responsibility',
+    difficulty: 'hard',
+    question: 'After a traffic accident with injuries, failing to stop and report can result in:',
+    answers: ['A small fine only', 'Criminal charges, license suspension, and imprisonment', 'No consequences if you were not at fault', 'Insurance handling the matter'],
+    correctIndex: 1,
+    explanation: 'Hit-and-run is a serious criminal offense. You must stop, provide assistance, and report to police even if you were not at fault.'
+  },
+  {
+    id: 'hum-66-drunk-driving-penalty',
+    difficulty: 'hard',
+    question: 'In most European countries, penalties for drunk driving typically include:',
+    answers: ['Warning letter only', 'Fines, license suspension, possible imprisonment, and criminal record', 'Mandatory driving course only', 'Insurance premium increase only'],
+    correctIndex: 1,
+    explanation: 'Drunk driving carries severe penalties including heavy fines, license revocation, prison time, and a permanent criminal record.'
+  },
+  {
+    id: 'hum-67-speeding-consequences',
+    difficulty: 'hard',
+    question: 'What is the relationship between speed and impact force in a collision?',
+    answers: ['Impact force increases linearly with speed', 'Impact force increases with the square of speed (doubling speed = 4x force)', 'Speed does not affect impact force', 'Impact force only depends on vehicle weight'],
+    correctIndex: 1,
+    explanation: 'Kinetic energy = ½mv². Doubling your speed quadruples the impact force, making crashes at high speed exponentially more deadly.'
+  },
+  {
+    id: 'env-68-red-light-consequences',
+    difficulty: 'hard',
+    question: 'Running a red light can result in:',
+    answers: ['No penalty if no camera', 'Points on license, fines, and potential disqualification for repeat offenses', 'Warning only', 'Civil fine only'],
+    correctIndex: 1,
+    explanation: 'Red light violations carry points, fines, and repeated offenses can lead to driving bans. Cameras record violations automatically.'
+  },
+  {
+    id: 'hum-69-seatbelt-penalty',
+    difficulty: 'hard',
+    question: 'What are the consequences of not wearing a seatbelt?',
+    answers: ['No penalty for adults', 'Fines, penalty points, and the driver is responsible for passengers under 14', 'Warning only for first offense', 'Insurance covers any resulting injuries'],
+    correctIndex: 1,
+    explanation: 'Not wearing a seatbelt results in fines. Drivers are responsible for ensuring all passengers under 14 wear belts.'
+  },
+  {
+    id: 'hum-70-phone-penalty',
+    difficulty: 'hard',
+    question: 'Using a handheld phone while driving typically results in:',
+    answers: ['Small fine only', 'Significant fine, penalty points, and possible license suspension for new drivers', 'Warning only', 'No penalty if stopped at traffic lights'],
+    correctIndex: 1,
+    explanation: 'Phone use while driving carries heavy fines and points. New drivers may face immediate license suspension.'
+  },
+  {
+    id: 'hum-71-accident-statistics',
+    difficulty: 'hard',
+    question: 'According to WHO statistics, approximately how many people die in road accidents globally each year?',
+    answers: ['100,000', '500,000', '1.35 million', '5 million'],
+    correctIndex: 2,
+    explanation: 'Road traffic injuries kill approximately 1.35 million people annually and are the leading cause of death for those aged 5-29.'
+  },
+  {
+    id: 'hum-72-young-driver-risk',
+    difficulty: 'hard',
+    question: 'Why are young drivers (17-25) at higher accident risk?',
+    answers: ['They drive older cars', 'Less experience, overconfidence, and higher risk-taking behavior', 'They drive more miles', 'They have worse eyesight'],
+    correctIndex: 1,
+    explanation: 'Young drivers lack experience in hazard perception and are more likely to speed, drive at night, and take risks.'
+  },
+  {
+    id: 'hum-73-elderly-challenges',
+    difficulty: 'hard',
+    question: 'What driving challenges may elderly drivers face?',
+    answers: ['Only slower reaction times', 'Reduced vision, slower reactions, reduced flexibility for blind spot checks, medication effects', 'No significant challenges', 'Only hearing loss'],
+    correctIndex: 1,
+    explanation: 'Age can affect vision, reactions, flexibility, and cognitive function. Some medications also impair driving ability.'
+  },
+  {
+    id: 'hum-74-night-accident-rate',
+    difficulty: 'hard',
+    question: 'What percentage of fatal accidents occur during nighttime hours despite less traffic?',
+    answers: ['About 10%', 'About 25%', 'About 40-50%', 'About 80%'],
+    correctIndex: 2,
+    explanation: 'Despite less traffic, 40-50% of fatal crashes occur at night due to reduced visibility, fatigue, and alcohol involvement.'
+  },
+  {
+    id: 'hum-75-weather-accidents',
+    difficulty: 'hard',
+    question: 'How much more likely are accidents on wet roads compared to dry roads?',
+    answers: ['10% more likely', '2-3 times more likely', '10 times more likely', 'No significant difference'],
+    correctIndex: 1,
+    explanation: 'Wet roads double or triple accident risk due to reduced tire grip, longer stopping distances, and reduced visibility.'
+  },
+  {
+    id: 'env-76-rural-vs-urban',
+    difficulty: 'hard',
+    question: 'Why are rural road accidents often more severe than urban accidents?',
+    answers: ['More traffic in rural areas', 'Higher speeds, narrower roads, less lighting, and longer emergency response times', 'More pedestrians', 'Worse road surfaces'],
+    correctIndex: 1,
+    explanation: 'Rural roads have higher speed limits, no lighting, tighter curves, and emergency services take longer to arrive.'
+  },
+  {
+    id: 'veh-77-vehicle-safety-rating',
+    difficulty: 'hard',
+    question: 'What does a 5-star Euro NCAP rating indicate?',
+    answers: ['Fuel efficiency level', 'Highest level of crash protection and safety features', 'Emission standards', 'Reliability rating'],
+    correctIndex: 1,
+    explanation: 'Euro NCAP tests crash protection for adults, children, pedestrians, and safety assist features. 5 stars = excellent protection.'
+  },
+  {
+    id: 'veh-78-aeb-system',
+    difficulty: 'hard',
+    question: 'How does Autonomous Emergency Braking (AEB) work?',
+    answers: ['It replaces the driver completely', 'Sensors detect imminent collision and apply brakes if driver does not react', 'It only works when parked', 'It increases braking power'],
+    correctIndex: 1,
+    explanation: 'AEB uses cameras/radar to detect obstacles. If collision is imminent and driver does not brake, the system brakes automatically.'
+  },
+  {
+    id: 'veh-79-lane-assist',
+    difficulty: 'hard',
+    question: 'What does a Lane Departure Warning system do?',
+    answers: ['Automatically changes lanes', 'Alerts driver when unintentionally leaving the lane without signaling', 'Prevents all lane changes', 'Only works on highways'],
+    correctIndex: 1,
+    explanation: 'Lane departure systems use cameras to detect lane markings and warn (vibration/sound) when drifting without indicating.'
+  },
+  {
+    id: 'veh-80-adaptive-cruise',
+    difficulty: 'hard',
+    question: 'How does Adaptive Cruise Control differ from standard cruise control?',
+    answers: ['It uses less fuel', 'It automatically adjusts speed to maintain safe distance from vehicle ahead', 'It only works in cities', 'There is no difference'],
+    correctIndex: 1,
+    explanation: 'ACC uses radar/cameras to detect vehicles ahead and automatically slows down or speeds up to maintain a set following distance.'
+  },
+  {
+    id: 'veh-81-blind-spot-monitor',
+    difficulty: 'hard',
+    question: 'How does a Blind Spot Monitoring system alert the driver?',
+    answers: ['Audible alarm only', 'Visual warning in/near side mirrors, often with audible alert if indicating to change lanes', 'Automatic steering correction', 'Dashboard message only'],
+    correctIndex: 1,
+    explanation: 'BSM uses radar to detect vehicles in blind spots and shows a warning light in the mirror, intensifying if you signal to change lanes.'
+  },
+  {
+    id: 'veh-82-auto-parking',
+    difficulty: 'hard',
+    question: 'What does an automatic parking system require from the driver?',
+    answers: ['Nothing - fully autonomous', 'Driver controls throttle and brake while system steers, or supervises fully automatic parking', 'Driver must still steer', 'Only works in marked spaces'],
+    correctIndex: 1,
+    explanation: 'Most systems either steer while you control pedals, or park autonomously while driver supervises and can intervene.'
+  },
+  {
+    id: 'veh-83-rear-collision-prevention',
+    difficulty: 'hard',
+    question: 'Rear Cross-Traffic Alert (RCTA) is most useful when:',
+    answers: ['Driving forward', 'Reversing out of parking spaces with limited visibility', 'At traffic lights', 'On highways'],
+    correctIndex: 1,
+    explanation: 'RCTA warns of vehicles approaching from the sides when reversing, helpful in parking lots where visibility is blocked.'
+  },
+  {
+    id: 'veh-84-drowsiness-detection',
+    difficulty: 'hard',
+    question: 'How do drowsiness detection systems work?',
+    answers: ['They measure blood alcohol', 'They monitor steering patterns, eye movement, or facial features for signs of fatigue', 'They check heart rate only', 'They analyze voice patterns'],
+    correctIndex: 1,
+    explanation: 'These systems analyze steering behavior, eye closure, head position, or lane keeping to detect fatigue signs and suggest breaks.'
+  },
+  {
+    id: 'veh-85-tsr-system',
+    difficulty: 'hard',
+    question: 'What does a Traffic Sign Recognition (TSR) system do?',
+    answers: ['Automatically obeys all signs', 'Uses cameras to read road signs and display them to the driver', 'Controls traffic lights', 'Navigates to destinations'],
+    correctIndex: 1,
+    explanation: 'TSR cameras read speed limits and other signs, displaying them on the dashboard so drivers stay informed of current restrictions.'
+  },
+  {
+    id: 'veh-86-night-vision',
+    difficulty: 'hard',
+    question: 'How do automotive night vision systems help drivers?',
+    answers: ['They brighten headlights', 'They use infrared cameras to detect pedestrians and animals beyond headlight range', 'They only work in fog', 'They replace headlights'],
+    correctIndex: 1,
+    explanation: 'Night vision uses thermal or infrared imaging to spot warm objects like people or animals far beyond headlight range.'
+  },
+  {
+    id: 'veh-87-360-camera',
+    difficulty: 'hard',
+    question: 'What is a 360-degree surround view camera system?',
+    answers: ['A single rear camera', 'Multiple cameras combined to show a birds-eye view around the entire vehicle', 'A camera inside the car', 'A dashcam for recording'],
+    correctIndex: 1,
+    explanation: '360-degree systems combine 4+ cameras to create an overhead view of the car and surroundings, helping with tight parking.'
+  },
+  {
+    id: 'veh-88-hud-display',
+    difficulty: 'hard',
+    question: 'What is the benefit of a Head-Up Display (HUD)?',
+    answers: ['Entertainment purposes', 'Projects speed and navigation onto windshield so driver keeps eyes on road', 'Shows rear camera view', 'Displays advertisements'],
+    correctIndex: 1,
+    explanation: 'HUD projects key information onto the windshield, reducing the time drivers look away from the road to check instruments.'
+  },
+  {
+    id: 'veh-89-keyless-security',
+    difficulty: 'hard',
+    question: 'What is a "relay attack" on keyless entry vehicles?',
+    answers: ['Hacking the car radio', 'Thieves amplify key fob signal to unlock and start car without the real key', 'Breaking windows', 'Towing the vehicle'],
+    correctIndex: 1,
+    explanation: 'Criminals use relay devices to extend your key fob signal from inside your home to unlock and start your car. Store keys in signal-blocking pouches.'
+  },
+  {
+    id: 'veh-90-ev-safety',
+    difficulty: 'hard',
+    question: 'What unique safety consideration applies to electric vehicles in accidents?',
+    answers: ['They explode easily', 'High-voltage batteries require special handling by trained emergency responders', 'They are more flammable', 'No special considerations'],
+    correctIndex: 1,
+    explanation: 'EV batteries can pose electrocution risks. Emergency responders need EV-specific training. Orange cables indicate high voltage.'
   }
 ]
 

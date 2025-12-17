@@ -1312,17 +1312,137 @@ const allSignItems = Object.entries(signAssets).flatMap(([category, items]) =>
   }))
 )
 
+// Trafik levhaları için görsel/algısal zorluk sınıflandırması
+const easySignLabels = new Set([
+  'stop',
+  'give way',
+  'priority road',
+  'go ahead',
+  'go straight ahead only',
+  'go straight turn right ahead',
+  'turn left ahead',
+  'turn right',
+  'turn left or right ahead',
+  'keep left',
+  'roundabout',
+  'parking',
+  'taxi parking',
+  'bus stop',
+  'one way street',
+  'one way street left',
+  'airport',
+  'first aid',
+  'emergency phone',
+  'petrol station',
+  'recommended speed',
+  'highway',
+  'residential area',
+  'default roundabout lane',
+  'pedestrian crossing',
+  'pedestrians only'
+])
+
+const mediumSignLabels = new Set([
+  'children',
+  'pedestrian crossing',
+  'pedestrians',
+  'school crossing',
+  'traffic signals',
+  'road narrows on both side',
+  'road narrows on one side',
+  'road hump',
+  'uneven road',
+  'steep ascent',
+  'steep descent',
+  'dangerous bend',
+  'double dangerous bend',
+  'end of dual carriageway',
+  'two way traffic',
+  'two way traffic crosses one way road',
+  'traffic merges onto main carriageway',
+  'junction with priority right',
+  'junction with secondary road',
+  'junction on bend',
+  'slow moving vehicles on hill ahead',
+  'other danger',
+  'loose road surface',
+  'falling rocks',
+  'wild animals',
+  'domestic animals',
+  'elderly disabled pedestrians',
+  'hump bridge',
+  't junction',
+  'tramway',
+  'risk of ice',
+  'side winds',
+  'low flying aircrafts',
+  'low flying helicopters',
+  'water course alongside road',
+  'risk of grounding',
+  'soft verges ahead',
+  'roadworks',
+  'warning signs',
+  'traffic queues',
+  'swing bridge',
+  'tunnel',
+  'level crossing with barriers',
+  'pedal cycle route crossing the road',
+  'roundabout' // warning versiyonu
+])
+
+// Yol işaretlemeleri, sinyaller ve çoğu yasaklayıcı/plaka zor kabul edilir
+const hardSignCategories = new Set(['road-markings', 'signals', 'additional'])
+
+const hardSignLabels = new Set([
+  'no overtaking',
+  'no overtaking heavy vehicles',
+  'no vehicle over length shown',
+  'maximum weight',
+  'maximum width',
+  'minimum safe following between vehicles',
+  'no agricultural vehicles',
+  'no heavy goods vehicles',
+  'no motor vehicles except motorcycles',
+  'no horse drawn vehicles',
+  'no vehicles carrying dangerous water pollutants',
+  'no vehicles carrying explosives',
+  'no parking on odd dates',
+  'no parking on even dates',
+  'no parking or waiting',
+  'no parking zone',
+  'no parkingzone',
+  'no cycling',
+  'no crossing pedestrians',
+  'no entry motorcycles',
+  'no entry mopeds',
+  'no motor vehicles',
+  'no entry',
+  'no horns',
+  'no motor vehicles except motorcycles',
+  'stop customs',
+  'stop police',
+  'end of maximum speedlimit',
+  'end of no overtaking',
+  'end of all restrictions',
+  'end of no parkingzone',
+  'no vehicles carrying dangerous water pollutants',
+  'no vehicles carrying explosives'
+])
+
+const classifySignDifficulty = (sign) => {
+  const label = (sign.label || '').toLowerCase().trim()
+  if (easySignLabels.has(label)) return 'easy'
+  if (mediumSignLabels.has(label)) return 'medium'
+  if (hardSignLabels.has(label)) return 'hard'
+  if (hardSignCategories.has(sign.category)) return 'hard'
+  // fallback: kategori bazlı
+  if (sign.category === 'information' || sign.category === 'priority' || sign.category === 'mandatory') return 'easy'
+  if (sign.category === 'warning') return 'medium'
+  return 'hard'
+}
+
 const generatedSignQuestions = allSignItems.map((sign, index) => {
-  // Zorluk dağılımı: Easy (30+), Medium (30+), Hard (30+)
-  // information (17) + priority (9) + mandatory (13) = 39 easy
-  // warning (47) = 47 medium
-  // prohibitory (34) + road-markings (12) + signals (7) + additional (4) = 57 hard
-  const difficultyByCategory =
-    sign.category === 'information' || sign.category === 'priority' || sign.category === 'mandatory'
-      ? 'easy'
-      : sign.category === 'warning'
-        ? 'medium'
-        : 'hard'
+  const difficultyByCategory = classifySignDifficulty(sign)
 
   const pool = allSignItems.filter((s) => s._id !== sign._id)
   const wrongOptions = shuffleArray(pool).slice(0, 3)

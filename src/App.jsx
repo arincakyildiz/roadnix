@@ -2416,6 +2416,24 @@ function App() {
         correctEn: 'Coolant mixes with oil, white smoke from exhaust, engine overheats',
         wrongTr: ['Sadece far söner', 'Lastikler iner', 'Kapılar kilitlenmez'],
         wrongEn: ['Only headlights turn off', 'Tires deflate', 'Doors do not lock']
+      },
+      {
+        id: 'hard-abs-failure',
+        questionTr: 'ABS sistemi arızalanırsa hangi belirti görülür?',
+        questionEn: 'What symptom appears when the ABS system fails?',
+        correctTr: 'Gösterge panelinde ABS ışığı yanık kalır ve sert frenlemede tekerlekler kilitlenebilir',
+        correctEn: 'ABS warning light stays on and wheels can lock under hard braking',
+        wrongTr: ['Direksiyon kilitlenir', 'Motor durur', 'Fren pedalı yumuşar ve zemine kadar gider'],
+        wrongEn: ['Steering locks', 'Engine stalls', 'Brake pedal becomes soft to the floor']
+      },
+      {
+        id: 'hard-steering-box',
+        questionTr: 'Direksiyon kutusu boşluğu veya arızası nasıl anlaşılır?',
+        questionEn: 'How do you detect steering box play or failure?',
+        correctTr: 'Direksiyonda boşluk, tıkırtı sesleri ve düz giderken araç sağ/sola çekme',
+        correctEn: 'Steering has free play, knocking noises, and car pulls left/right while going straight',
+        wrongTr: ['Farlar titrer', 'Kornanın sesi kesilir', 'Koltuk ısıtması çalışmaz'],
+        wrongEn: ['Headlights flicker', 'Horn stops working', 'Seat heater fails']
       }
     ]
 
